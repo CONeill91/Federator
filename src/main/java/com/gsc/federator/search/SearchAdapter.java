@@ -2,6 +2,8 @@ package com.gsc.federator.search;
 
 import com.gsc.federator.model.SearchQuery;
 import com.gsc.federator.model.SearchResultContainer;
+import com.gsc.federator.model.SummaryRequest;
+import com.gsc.federator.model.SummaryResult;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -12,5 +14,9 @@ import java.io.IOException;
  */
 @Component
 public interface SearchAdapter {
-    void peformSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException;
+    String getName();
+
+    void peformSearch(SearchQuery searchQuery, SearchResultContainer searchResultContainer) throws IOException;
+
+    SummaryResult summarize(SummaryRequest summaryRequest) throws IOException;
 }

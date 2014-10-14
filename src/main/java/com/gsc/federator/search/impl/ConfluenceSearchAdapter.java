@@ -1,8 +1,6 @@
 package com.gsc.federator.search.impl;
 
-import com.gsc.federator.model.SearchQuery;
-import com.gsc.federator.model.SearchResult;
-import com.gsc.federator.model.SearchResultContainer;
+import com.gsc.federator.model.*;
 import com.gsc.federator.search.SearchAdapter;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -24,6 +22,11 @@ public class ConfluenceSearchAdapter implements SearchAdapter {
     private static final Logger logger = LoggerFactory.getLogger(ConfluenceSearchAdapter.class);
 
     @Override
+    public String getName() {
+        return "Confluence";
+    }
+
+    @Override
     public void peformSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException {
 
         final Document doc = Jsoup.connect("https://confluence.guidewire.com/dosearchsite.action?queryString=" + searchQuery.getQuery()).
@@ -41,7 +44,7 @@ public class ConfluenceSearchAdapter implements SearchAdapter {
             try {
                 final SearchResult searchResult = new SearchResult();
 
-                searchResult.setSource("Confluence");
+                searchResult.setSource(this.getName());
                 searchResult.setHref("https://confluence.guidewire.com" + result.select("a").first().attr("href"));
                 searchResult.setTitle(result.select("div.result").text());
                 searchResult.setContent(result.select("span.search-result-summary").first().text());
@@ -51,5 +54,10 @@ public class ConfluenceSearchAdapter implements SearchAdapter {
             }
         }
 
+    }
+
+    @Override
+    public SummaryResult summarize(final SummaryRequest summaryRequest) throws IOException {
+        return null;
     }
 }

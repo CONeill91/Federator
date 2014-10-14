@@ -1,8 +1,6 @@
 package com.gsc.federator.search.impl;
 
-import com.gsc.federator.model.SearchQuery;
-import com.gsc.federator.model.SearchResult;
-import com.gsc.federator.model.SearchResultContainer;
+import com.gsc.federator.model.*;
 import com.gsc.federator.search.SearchAdapter;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -24,6 +22,11 @@ public class WikiSearchAdapter implements SearchAdapter {
     private static final Logger logger = LoggerFactory.getLogger(WikiSearchAdapter.class);
 
     @Override
+    public String getName() {
+        return "Wiki";
+    }
+
+    @Override
     public void peformSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException {
         final Document doc = Jsoup.connect("http://search:8080/search/?query=" + searchQuery.getQuery() + "&go=Go").get();
         final Elements results = doc.select("div#yschweb ol li");
@@ -32,7 +35,7 @@ public class WikiSearchAdapter implements SearchAdapter {
             try {
                 final SearchResult searchResult = new SearchResult();
 
-                searchResult.setSource("Wiki");
+                searchResult.setSource(this.getName());
                 searchResult.setHref(result.select("a.yschttl").first().attr("href"));
                 searchResult.setTitle(result.select("a.yschttl").first().text());
                 searchResult.setContent(result.select("div.yschabstr").first().text());
@@ -41,6 +44,16 @@ public class WikiSearchAdapter implements SearchAdapter {
                 logger.error("Error selecting element {}", result.outerHtml(), ex);
             }
         }
+    }
+
+    @Override
+    public SummaryResult summarize(final SummaryRequest summaryRequest) throws IOException {
+        final SummaryResult summaryResult = new SummaryResult(summaryRequest);
+
+        summaryResult.setContent(
+                Jsoup.connect(summaryRequest.getUrl()).get().text());
+
+        return summaryResult;
     }
 
 }

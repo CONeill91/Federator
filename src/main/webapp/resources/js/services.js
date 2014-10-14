@@ -8,6 +8,9 @@ angular.module('FederatorApp.services', []).
         return {
             search: function (query) {
                 return $http.get('/search?q=' + encodeURIComponent(query));
+            },
+            summarize: function (source, url) {
+                return $http.get('/summarize?s=' + encodeURIComponent(source) + '&u=' + encodeURIComponent(url));
             }
         };
     });
