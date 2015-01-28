@@ -24,17 +24,24 @@ public class SearchService implements com.gsc.federator.services.SearchService {
 
 
     @Override
-    public void peformSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) {
+    public SearchResultContainer peformSearch(final SearchQuery searchQuery) {
+        final SearchResultContainer searchResultContainer = new SearchResultContainer(searchQuery.getQuery());
+
         for (final SearchAdapter searchAdapter : searchAdapters) {
             try {
-                logger.debug("Searching in [{}]", searchAdapter);
+                if (searchQuery.contains(searchAdapter.getName())) {
 
-                searchAdapter.peformSearch(searchQuery, searchResultContainer);
+                    logger.debug("Searching in [{}]", searchAdapter);
 
-                logger.info("Searched in [{}]", searchAdapter);
+                    searchAdapter.peformSearch(searchQuery, searchResultContainer);
+
+                    logger.info("Searched in [{}]", searchAdapter);
+                }
             } catch (IOException e) {
                 logger.error("Unable to search [{}]", searchAdapter, e);
             }
         }
+
+        return searchResultContainer;
     }
 }

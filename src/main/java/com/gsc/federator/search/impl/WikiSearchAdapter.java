@@ -28,18 +28,18 @@ public class WikiSearchAdapter implements SearchAdapter {
 
     @Override
     public void peformSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException {
-        final Document doc = Jsoup.connect("http://search:8080/search/?query=" + searchQuery.getQuery() + "&go=Go").get();
-        final Elements results = doc.select("div#yschweb ol li");
+        final Document doc = Jsoup.connect("http://wiki/index.php?title=Special%3ASearch&search=" + searchQuery.getQuery() + "&fulltext=Search").get();
+        final Elements results = doc.select("ul.mw-search-results li");
 
         for (final Element result : results) {
             try {
                 final SearchResult searchResult = new SearchResult();
 
                 searchResult.setSource(this.getName());
-                searchResult.setHref(result.select("a.yschttl").first().attr("href"));
-                searchResult.setTitle(result.select("a.yschttl").first().text());
-                searchResult.setContent(result.select("div.yschabstr").first().text());
-                searchResultContainer.getSearchResults().add(searchResult);
+                searchResult.setHref("http://wiki" + result.select("a").first().attr("href"));
+                searchResult.setTitle(result.select("a").first().text());
+                searchResult.setContent(result.select("div.searchresult").first().text());
+                searchResultContainer.addSearchResult(searchResult);
             } catch (Exception ex) {
                 logger.error("Error selecting element {}", result.outerHtml(), ex);
             }
@@ -48,12 +48,7 @@ public class WikiSearchAdapter implements SearchAdapter {
 
     @Override
     public SummaryResult summarize(final SummaryRequest summaryRequest) throws IOException {
-        final SummaryResult summaryResult = new SummaryResult(summaryRequest);
-
-        summaryResult.setContent(
-                Jsoup.connect(summaryRequest.getUrl()).get().text());
-
-        return summaryResult;
+        return null;
     }
 
 }

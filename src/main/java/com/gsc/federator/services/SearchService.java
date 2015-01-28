@@ -10,6 +10,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public interface SearchService {
-    void peformSearch(SearchQuery searchQuery, SearchResultContainer searchResultContainer);
+    SearchResultContainer peformSearch(SearchQuery searchQuery);
 
 }

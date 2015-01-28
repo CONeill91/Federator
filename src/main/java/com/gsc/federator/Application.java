@@ -8,8 +8,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.Arrays;
-
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan
@@ -24,7 +22,6 @@ public class Application {
 
         final String[] beanNames = ctx.getBeanDefinitionNames();
 
-        Arrays.sort(beanNames);
         for (final String beanName : beanNames) {
             logger.info("bean [{}]", beanName);
         }

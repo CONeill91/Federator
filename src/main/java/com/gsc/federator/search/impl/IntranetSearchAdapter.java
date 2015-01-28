@@ -14,50 +14,45 @@ import java.io.IOException;
 
 /**
  * User: msaccotelli
- * Date: 10/13/2014
+ * Date: 10/22/2014
  */
 @Component
-public class ConfluenceSearchAdapter implements SearchAdapter {
+public class IntranetSearchAdapter implements SearchAdapter {
 
-    private static final Logger logger = LoggerFactory.getLogger(ConfluenceSearchAdapter.class);
+    private static final Logger logger = LoggerFactory.getLogger(IntranetSearchAdapter.class);
 
     @Override
     public String getName() {
-        return "Confluence";
+        return "Intranet";
     }
 
     @Override
     public void peformSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException {
-
-        final Document doc = Jsoup.connect("https://confluence.guidewire.com/dosearchsite.action?queryString=" + searchQuery.getQuery()).
-//                cookie("seraph.confluence", "32407755%3Aeb8165980ba3c95e4ce79dec7e8cab032b35f7f5").
-//                cookie("JSESSIONID", "4875ED3BE473C9CC34BC27814C4E1DD0").
-                get();
-
-        final Elements results = doc.select("ul.search-results li");
+        final Document doc = Jsoup.connect("http://search:8080/search/?query=" + searchQuery.getQuery() + "&go=Go").get();
+        final Elements results = doc.select("div#yschweb ol li");
 
         for (final Element result : results) {
-            if (result.select("a").size() == 0 || result.select("span.search-result-summary").size() == 0) {
-                continue;
-            }
-
             try {
                 final SearchResult searchResult = new SearchResult();
 
                 searchResult.setSource(this.getName());
-                searchResult.setHref("https://confluence.guidewire.com" + result.select("a").first().attr("href"));
-                searchResult.setTitle(result.select("div.result").text());
-                searchResult.setContent(result.select("span.search-result-summary").first().text());
+                searchResult.setHref(result.select("a.yschttl").first().attr("href"));
+                searchResult.setTitle(result.select("a.yschttl").first().text());
+                searchResult.setContent(result.select("div.yschabstr").first().text());
                 searchResultContainer.addSearchResult(searchResult);
             } catch (Exception ex) {
                 logger.error("Error selecting element {}", result.outerHtml(), ex);
             }
         }
-
     }
 
     @Override
     public SummaryResult summarize(final SummaryRequest summaryRequest) throws IOException {
-        return null;
+        final SummaryResult summaryResult = new SummaryResult(summaryRequest);
+
+        summaryResult.setContent(
+                Jsoup.connect(summaryRequest.getUrl()).get().text());
+
+        return summaryResult;
     }
 }

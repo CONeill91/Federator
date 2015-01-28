@@ -21,4 +21,18 @@ public class SearchResultContainer implements ModelObject {
         return searchResults;
     }
 
+    public void addSearchResult(final SearchResult searchResult) {
+        if (searchResult.getTitle() == null || searchResult.getTitle().length() == 0) {
+            return;
+        }
+
+        for (final SearchResult searchResultExisting : searchResults) {
+            if (searchResultExisting.getTitle().equalsIgnoreCase(searchResult.getTitle())) {
+                return;
+            }
+        }
+
+        searchResults.add(searchResult);
+    }
+
 }

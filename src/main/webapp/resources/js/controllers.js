@@ -6,18 +6,50 @@ angular.module('FederatorApp.controllers', []).
     controller('SearchController', function ($scope, SearchService) {
         $scope.results = [];
 
-        $scope.doSearch = function () {
-            $scope.inflight = true;
+        $scope.searchLocations = [
+            'Confluence',
+            'Jira',
+            'Mail:PL',
+            'Mail:BC',
+            'Mail:CC',
+            'Mail:PC',
+            'Intranet',
+            'Wiki'
+        ];
+
+        $scope.search = {
+            searchIn: angular.copy($scope.searchLocations)
+        };
+
+        $scope.checkAll = function () {
+            $scope.search.searchIn = angular.copy($scope.searchLocations);
+        };
+
+        $scope.uncheckAll = function () {
+            $scope.search.searchIn = [];
+        };
+
+        $scope.doParallelSearch = function () {
+            $scope.inflight = 0;
             $scope.results = [];
 
-            var searchPromise = SearchService.search($scope.query);
+            angular.forEach($scope.search.searchIn, function (value) {
+                var searchPromise = SearchService.search(
+                    {
+                        query: $scope.query,
+                        searchIn: [value]
+                    }
+                );
 
-            searchPromise.then(
-                function (payload) {
-                    $scope.results = payload.data['searchResults'];
-                    $scope.inflight = false;
-                    $scope.searched = true;
-                });
+                $scope.inflight++;
+
+                searchPromise.then(
+                    function (payload) {
+                        $scope.results = $scope.results.concat(payload.data['searchResults']);
+                        $scope.inflight--;
+                        $scope.searched = true;
+                    });
+            });
         };
 
         $scope.doSummary = function (result) {
@@ -25,7 +57,7 @@ angular.module('FederatorApp.controllers', []).
 
             summaryPromise.then(
                 function (payload) {
-                    console.log(payload);
+                    //console.log(payload);
                     $scope.summary = payload.data['content'];
                 });
         };

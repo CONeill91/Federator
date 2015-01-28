@@ -17,37 +17,37 @@ import java.io.IOException;
  * Date: 10/13/2014
  */
 @Component
-public class ConfluenceSearchAdapter implements SearchAdapter {
+public class JiraSearchAdapter implements SearchAdapter {
 
-    private static final Logger logger = LoggerFactory.getLogger(ConfluenceSearchAdapter.class);
+    private static final Logger logger = LoggerFactory.getLogger(JiraSearchAdapter.class);
 
     @Override
     public String getName() {
-        return "Confluence";
+        return "Jira";
     }
 
     @Override
     public void peformSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException {
 
-        final Document doc = Jsoup.connect("https://confluence.guidewire.com/dosearchsite.action?queryString=" + searchQuery.getQuery()).
-//                cookie("seraph.confluence", "32407755%3Aeb8165980ba3c95e4ce79dec7e8cab032b35f7f5").
-//                cookie("JSESSIONID", "4875ED3BE473C9CC34BC27814C4E1DD0").
+        // https://jira.guidewire.com/issues/?jql=text%20~%20%22ISO8601DateFormat%22
+
+        final Document doc = Jsoup.connect("https://jira.guidewire.com/issues/?jql=text%20~%20%22" + searchQuery.getQuery() + "%22").
+                cookie("seraph.rememberme.cookie", "41660%3A9b87214f5d7aaf62fef567016896c2c3386f0b57").
+                cookie("_ga", "GA1.2.982632285.1422026701").
+                cookie("JSESSIONID", "A8905E669A066AF71E70DB58C18CB5D0").
+                cookie("atlassian.xsrf.token", "AFZ7-DEUI-835B-CBSC|796e069bd7fe2a12a00341d5a86ce2d3928f3124|lin").
                 get();
 
-        final Elements results = doc.select("ul.search-results li");
+        final Elements results = doc.select("div ol li");
 
         for (final Element result : results) {
-            if (result.select("a").size() == 0 || result.select("span.search-result-summary").size() == 0) {
-                continue;
-            }
-
-            try {
+              try {
                 final SearchResult searchResult = new SearchResult();
 
                 searchResult.setSource(this.getName());
-                searchResult.setHref("https://confluence.guidewire.com" + result.select("a").first().attr("href"));
-                searchResult.setTitle(result.select("div.result").text());
-                searchResult.setContent(result.select("span.search-result-summary").first().text());
+                searchResult.setHref("https://jira.guidewire.com" + result.select("a").first().attr("href"));
+                searchResult.setTitle(result.select("a").first().text() + " - " + result.select("a").last().text());
+                searchResult.setContent(result.select("img").first().attr("title"));
                 searchResultContainer.addSearchResult(searchResult);
             } catch (Exception ex) {
                 logger.error("Error selecting element {}", result.outerHtml(), ex);

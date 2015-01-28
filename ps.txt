@@ -1,0 +1,141 @@
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.0  19356  1264 ?        Ss    2013   0:00 /sbin/init
+root         2  0.0  0.0      0     0 ?        S     2013   0:00 [kthreadd]
+root         3  0.0  0.0      0     0 ?        S     2013   0:52 [migration/0]
+root         4  0.0  0.0      0     0 ?        S     2013   0:18 [ksoftirqd/0]
+root         5  0.0  0.0      0     0 ?        S     2013   0:00 [migration/0]
+root         6  0.0  0.0      0     0 ?        S     2013   0:49 [watchdog/0]
+root         7  0.0  0.0      0     0 ?        S     2013   0:45 [migration/1]
+root         8  0.0  0.0      0     0 ?        S     2013   0:00 [migration/1]
+root         9  0.0  0.0      0     0 ?        S     2013   0:13 [ksoftirqd/1]
+root        10  0.0  0.0      0     0 ?        S     2013   0:42 [watchdog/1]
+root        11  0.0  0.0      0     0 ?        S     2013   0:54 [migration/2]
+root        12  0.0  0.0      0     0 ?        S     2013   0:00 [migration/2]
+root        13  0.0  0.0      0     0 ?        S     2013   0:11 [ksoftirqd/2]
+root        14  0.0  0.0      0     0 ?        S     2013   0:41 [watchdog/2]
+root        15  0.0  0.0      0     0 ?        S     2013   0:46 [migration/3]
+root        16  0.0  0.0      0     0 ?        S     2013   0:00 [migration/3]
+root        17  0.0  0.0      0     0 ?        S     2013   0:08 [ksoftirqd/3]
+root        18  0.0  0.0      0     0 ?        S     2013   0:41 [watchdog/3]
+root        19  0.0  0.0      0     0 ?        S     2013  31:51 [events/0]
+root        20  0.0  0.0      0     0 ?        S     2013  17:25 [events/1]
+root        21  0.0  0.0      0     0 ?        S     2013  21:42 [events/2]
+root        22  0.0  0.0      0     0 ?        S     2013  34:16 [events/3]
+root        23  0.0  0.0      0     0 ?        S     2013   0:00 [cgroup]
+root        24  0.0  0.0      0     0 ?        S     2013   0:00 [khelper]
+root        25  0.0  0.0      0     0 ?        S     2013   0:00 [netns]
+root        26  0.0  0.0      0     0 ?        S     2013   0:00 [async/mgr]
+root        27  0.0  0.0      0     0 ?        S     2013   0:00 [pm]
+root        28  0.0  0.0      0     0 ?        S     2013   0:00 [xenwatch]
+root        29  0.0  0.0      0     0 ?        S     2013   0:35 [xenbus]
+root        30  0.0  0.0      0     0 ?        S     2013   1:50 [sync_supers]
+root        31  0.0  0.0      0     0 ?        S     2013   2:33 [bdi-default]
+root        32  0.0  0.0      0     0 ?        S     2013   0:00 [kintegrityd/0]
+root        33  0.0  0.0      0     0 ?        S     2013   0:00 [kintegrityd/1]
+root        34  0.0  0.0      0     0 ?        S     2013   0:00 [kintegrityd/2]
+root        35  0.0  0.0      0     0 ?        S     2013   0:00 [kintegrityd/3]
+root        36  0.0  0.0      0     0 ?        S     2013   2:17 [kblockd/0]
+root        37  0.0  0.0      0     0 ?        S     2013   0:00 [kblockd/1]
+root        38  0.0  0.0      0     0 ?        S     2013   0:00 [kblockd/2]
+root        39  0.0  0.0      0     0 ?        S     2013   0:00 [kblockd/3]
+root        40  0.0  0.0      0     0 ?        S     2013   0:00 [ata/0]
+root        41  0.0  0.0      0     0 ?        S     2013   0:00 [ata/1]
+root        42  0.0  0.0      0     0 ?        S     2013   0:00 [ata/2]
+root        43  0.0  0.0      0     0 ?        S     2013   0:00 [ata/3]
+root        44  0.0  0.0      0     0 ?        S     2013   0:00 [ata_aux]
+root        45  0.0  0.0      0     0 ?        S     2013   0:00 [ksuspend_usbd]
+root        46  0.0  0.0      0     0 ?        S     2013   0:00 [khubd]
+root        47  0.0  0.0      0     0 ?        S     2013   0:00 [kseriod]
+root        48  0.0  0.0      0     0 ?        S     2013   0:00 [md/0]
+root        49  0.0  0.0      0     0 ?        S     2013   0:00 [md/1]
+root        50  0.0  0.0      0     0 ?        S     2013   0:00 [md/2]
+root        51  0.0  0.0      0     0 ?        S     2013   0:00 [md/3]
+root        52  0.0  0.0      0     0 ?        S     2013   0:00 [md_misc/0]
+root        53  0.0  0.0      0     0 ?        S     2013   0:00 [md_misc/1]
+root        54  0.0  0.0      0     0 ?        S     2013   0:00 [md_misc/2]
+root        55  0.0  0.0      0     0 ?        S     2013   0:00 [md_misc/3]
+root        56  0.0  0.0      0     0 ?        S     2013   0:15 [khungtaskd]
+root        57  0.0  0.0      0     0 ?        S     2013   0:28 [kswapd0]
+root        58  0.0  0.0      0     0 ?        SN    2013   0:00 [ksmd]
+root        59  0.0  0.0      0     0 ?        S     2013   0:00 [aio/0]
+root        60  0.0  0.0      0     0 ?        S     2013   0:00 [aio/1]
+root        61  0.0  0.0      0     0 ?        S     2013   0:00 [aio/2]
+root        62  0.0  0.0      0     0 ?        S     2013   0:00 [aio/3]
+root        63  0.0  0.0      0     0 ?        S     2013   0:00 [crypto/0]
+root        64  0.0  0.0      0     0 ?        S     2013   0:00 [crypto/1]
+root        65  0.0  0.0      0     0 ?        S     2013   0:00 [crypto/2]
+root        66  0.0  0.0      0     0 ?        S     2013   0:00 [crypto/3]
+root        71  0.0  0.0      0     0 ?        S     2013   0:00 [kthrotld/0]
+root        72  0.0  0.0      0     0 ?        S     2013   0:00 [kthrotld/1]
+root        73  0.0  0.0      0     0 ?        S     2013   0:00 [kthrotld/2]
+root        74  0.0  0.0      0     0 ?        S     2013   0:00 [kthrotld/3]
+root        76  0.0  0.0      0     0 ?        S     2013   0:00 [khvcd]
+root        77  0.0  0.0      0     0 ?        S     2013   0:00 [kpsmoused]
+root        78  0.0  0.0      0     0 ?        S     2013   0:00 [usbhid_resumer]
+root       109  0.0  0.0      0     0 ?        S     2013   0:00 [kstriped]
+root       261  0.0  0.0      0     0 ?        S     2013   0:00 [kdmflush]
+root       263  0.0  0.0      0     0 ?        S     2013   0:00 [kdmflush]
+root       282  0.0  0.0      0     0 ?        S     2013  10:45 [jbd2/dm-0-8]
+root       283  0.0  0.0      0     0 ?        S     2013   0:00 [ext4-dio-unwrit]
+root       284  0.0  0.0      0     0 ?        S     2013   0:00 [ext4-dio-unwrit]
+root       285  0.0  0.0      0     0 ?        S     2013   0:00 [ext4-dio-unwrit]
+root       286  0.0  0.0      0     0 ?        S     2013   0:00 [ext4-dio-unwrit]
+root       333  0.0  0.0      0     0 ?        S     2013   0:08 [kauditd]
+root       374  0.0  0.0  10796   264 ?        S<s   2013   0:00 /sbin/udevd -d
+root       668  0.0  0.0  10792   268 ?        S<    2013   0:00 /sbin/udevd -d
+root       698  0.0  0.0      0     0 ?        S     2013   0:00 [jbd2/xvda1-8]
+root       699  0.0  0.0      0     0 ?        S     2013   0:00 [ext4-dio-unwrit]
+root       700  0.0  0.0      0     0 ?        S     2013   0:00 [ext4-dio-unwrit]
+root       701  0.0  0.0      0     0 ?        S     2013   0:00 [ext4-dio-unwrit]
+root       702  0.0  0.0      0     0 ?        S     2013   0:00 [ext4-dio-unwrit]
+root       768  0.0  0.0      0     0 ?        S     2013  12:23 [flush-253:0]
+root       904  0.0  0.0   9120   660 ?        Ss    2013   0:00 /sbin/dhclient -H mercurycc -1 -q -cf /etc/dhcp/dhclient-eth0.conf -lf /var/lib/dhclient/dhclient-eth0.leases -pf /var/run/dhclient-eth0.pid eth0
+root       951  0.0  0.0 251960  5596 ?        Sl    2013   9:06 /sbin/rsyslogd -i /var/run/syslogd.pid -c 5
+root       969  0.0  0.0   9144   552 ?        Ss    2013  81:26 irqbalance
+rpc        983  0.0  0.0  18972   604 ?        Ss    2013   0:51 rpcbind
+rpcuser   1001  0.0  0.0  23344   740 ?        Ss    2013   0:00 rpc.statd
+root      1020  0.0  0.0  12260  2088 ?        S     2013  43:25 /bin/bash /usr/sbin/xe-daemon -p /var/run/xe-daemon.pid
+root      1115  0.0  0.0      0     0 ?        S     2013   0:00 [rpciod/0]
+root      1116  0.0  0.0      0     0 ?        S     2013   0:00 [rpciod/1]
+root      1117  0.0  0.0      0     0 ?        S     2013   0:00 [rpciod/2]
+root      1118  0.0  0.0      0     0 ?        S     2013   0:00 [rpciod/3]
+root      1122  0.0  0.0  23088   252 ?        Ss    2013   0:00 rpc.idmapd
+dbus      1149  0.0  0.0  21400   756 ?        Ss    2013   0:01 dbus-daemon --system
+root      1160  0.0  0.0 189156  1000 ?        Ss    2013   0:00 cupsd -C /etc/cups/cupsd.conf
+68        1190  0.0  0.0  24888  1376 ?        Ss    2013   0:00 hald
+root      1191  0.0  0.0  18104   776 ?        S     2013   0:00 hald-runner
+root      1244  0.0  0.0  10792   248 ?        S<    2013   0:00 /sbin/udevd -d
+root      1250  0.0  0.0 385708   904 ?        Ssl   2013   3:56 automount --pid-file /var/run/autofs.pid
+ntp       1287  0.0  0.0  30160  1180 ?        Ss    2013   0:58 ntpd -u ntp:ntp -p /var/run/ntpd.pid -g
+root      1363  0.0  0.0  78684  1448 ?        Ss    2013   6:23 /usr/libexec/postfix/master
+postfix   1372  0.0  0.0  78936  1668 ?        S     2013   0:34 qmgr -l -t fifo -u
+root      1387  0.0  0.0 110172   632 ?        Ss    2013   0:00 /usr/sbin/abrtd
+root      1395  0.0  0.0 108064   696 ?        Ss    2013   0:11 abrt-dump-oops -d /var/spool/abrt -rwx /var/log/messages
+root      1403  0.0  0.0 117212   732 ?        Ss    2013   3:34 crond
+root      1414  0.0  0.0  21452   324 ?        Ss    2013   0:00 /usr/sbin/atd
+root      1426  0.0  0.0  57160   212 ?        Ss    2013   0:55 /usr/sbin/certmonger -S -p /var/run/certmonger.pid
+root      1442  0.0  0.0   4076   504 hvc0     Ss+   2013   0:00 /sbin/agetty /dev/hvc0 38400 vt100-nav
+root      1443  0.0  0.0   4060   476 tty1     Ss+   2013   0:00 /sbin/mingetty /dev/tty1
+root      1445  0.0  0.0   4060   476 tty2     Ss+   2013   0:00 /sbin/mingetty /dev/tty2
+root      1447  0.0  0.0   4060   476 tty3     Ss+   2013   0:00 /sbin/mingetty /dev/tty3
+root      1449  0.0  0.0   4060   476 tty4     Ss+   2013   0:00 /sbin/mingetty /dev/tty4
+root      1451  0.0  0.0   4060   476 tty5     Ss+   2013   0:00 /sbin/mingetty /dev/tty5
+root      1453  0.0  0.0   4060   476 tty6     Ss+   2013   0:00 /sbin/mingetty /dev/tty6
+root      1471  0.0  0.0  93172   644 ?        S<sl  2013   0:49 auditd
+root      2288  0.0  0.0  64356  1192 ?        Ss   Jan08   0:00 /usr/sbin/sshd
+root     10021  0.0  0.0 120068  2552 ?        Ss    2014   0:01 SCREEN -dR
+root     10022  0.0  0.0 108468  1968 pts/1    Ss    2014   0:00 /bin/bash
+root     16612  0.0  6.8 5437148 551604 pts/1  Sl+   2014 112:39 /opt/java/64bit/jdk1.8.0_20/bin/java -classpath /opt/gosu/gosu-0.10.J82/lib/gosu-launcher-api-2.jar:/opt/gosu/gosu-0.10.J82/lib/gosu-launcher-impl-2.1.jar:/opt/gosu/gosu-0.10.J82/lib/gosu-launcher-aether-2.1.jar gw.lang.launch.impl.GosuLauncher -Dlauncher.properties.file=/opt/gosu/gosu-0.10.J82/bin/gosulaunch.properties -classpath . quiz/backend/QuizBackend.gsp
+postfix  20523  0.0  0.0  79164  3380 ?        S    08:44   0:00 pickup -l -t fifo -u
+root     22482  0.0  0.0 110452  4000 pts/3    Ss   Jan14   0:00 /bin/bash
+root     22897  0.0  0.0  45132   916 ?        Ss   09:37   0:00 nginx: master process /usr/sbin/nginx -c /etc/nginx/nginx.conf
+nginx    22898  0.0  0.0  45584  2152 ?        S    09:37   0:00 nginx: worker process                   
+root     22976  0.0  0.0  98164  4128 ?        Ss   09:39   0:00 sshd: root@notty 
+root     22978  0.0  0.0  55492  2208 ?        Ss   09:39   0:00 /usr/libexec/openssh/sftp-server
+root     23178  8.7  2.8 4774772 232796 pts/3  Sl   09:41   0:12 /opt/java/64bit/jdk1.8.0_20/bin/java -classpath /opt/apache-maven-3.2.5/boot/plexus-classworlds-2.5.2.jar -Dclassworlds.conf=/opt/apache-maven-3.2.5/bin/m2.conf -Dmaven.home=/opt/apache-maven-3.2.5 org.codehaus.plexus.classworlds.launcher.Launcher clean spring-boot:run
+root     23202 13.3  4.0 5252472 323608 pts/3  Sl   09:41   0:17 /opt/java/64bit/jdk1.8.0_20/jre/bin/java -cp /opt/federator/src/main/resources:/opt/federator/src/main/resources:/opt/federator/target/classes:/root/.m2/repository/org/springframework/spring-web/4.0.7.RELEASE/spring-web-4.0.7.RELEASE.jar:/root/.m2/repository/org/eclipse/jetty/jetty-webapp/8.1.15.v20140411/jetty-webapp-8.1.15.v20140411.jar:/root/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar:/root/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.3.4/jackson-core-2.3.4.jar:/root/.m2/repository/org/springframework/spring-aop/4.0.7.RELEASE/spring-aop-4.0.7.RELEASE.jar:/root/.m2/repository/org/webjars/angularjs/1.2.26/angularjs-1.2.26.jar:/root/.m2/repository/org/eclipse/jetty/jetty-continuation/8.1.15.v20140411/jetty-continuation-8.1.15.v20140411.jar:/root/.m2/repository/org/eclipse/jetty/orbit/com.sun.el/2.2.0.v201108011116/com.sun.el-2.2.0.v201108011116.jar:/root/.m2/repository/org/springframework/boot/spring-boot/1.1.7.RELEASE/spring-boot-1.1.7.RELEASE.jar:/root/.m2/repository/ch/qos/logback/logback-core/1.1.2/logback-core-1.1.2.jar:/root/.m2/repository/org/springframework/boot/spring-boot-starter-logging/1.1.7.RELEASE/spring-boot-starter-logging-1.1.7.RELEASE.jar:/root/.m2/repository/org/eclipse/jetty/orbit/org.apache.jasper.glassfish/2.2.2.v201112011158/org.apache.jasper.glassfish-2.2.2.v201112011158.jar:/root/.m2/repository/commons-io/commons-io/2.4/commons-io-2.4.jar:/root/.m2/repository/org/springframework/spring-context/4.0.7.RELEASE/spring-context-4.0.7.RELEASE.jar:/root/.m2/repository/org/webjars/bootstrap/3.1.0/bootstrap-3.1.0.jar:/root/.m2/repository/org/webjars/jquery/1.9.0/jquery-1.9.0.jar:/root/.m2/repository/org/hibernate/hibernate-validator/5.0.3.Final/hibernate-validator-5.0.3.Final.jar:/root/.m2/repository/org/eclipse/jetty/orbit/javax.servlet/3.0.0.v201112011016/javax.servlet-3.0.0.v201112011016.jar:/root/.m2/repository/org/slf4j/jcl-over-slf4j/1.7.7/jcl-over-slf4j-1.7.7.jar:/root/.m2/repository/org/jboss/logging/jboss-logging/3.1.1.GA/jboss-logging-3.1.1.GA.jar:/root/.m2/repository/org/eclipse/jetty/jetty-io/8.1.15.v20140411/jetty-io-8.1.15.v20140411.jar:/root/.m2/repository/org/springframework/spring-expression/4.0.7.RELEASE/spring-expression-4.0.7.RELEASE.jar:/root/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/1.1.7.RELEASE/spring-boot-autoconfigure-1.1.7.RELEASE.jar:/root/.m2/repository/org/eclipse/jetty/jetty-jsp/8.1.15.v20140411/jetty-jsp-8.1.15.v20140411.jar:/root/.m2/repository/ch/qos/logback/logback-classic/1.1.2/logback-classic-1.1.2.jar:/root/.m2/repository/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar:/root/.m2/repository/org/springframework/boot/spring-boot-starter-web/1.1.7.RELEASE/spring-boot-starter-web-1.1.7.RELEASE.jar:/root/.m2/repository/com/fasterxml/classmate/1.0.0/classmate-1.0.0.jar:/root/.m2/repository/org/slf4j/log4j-over-slf4j/1.7.7/log4j-over-slf4j-1.7.7.jar:/root/.m2/repository/org/eclipse/jetty/jetty-http/8.1.15.v20140411/jetty-http-8.1.15.v20140411.jar:/root/.m2/repository/org/springframework/boot/spring-boot-actuator/1.1.7.RELEASE/spring-boot-actuator-1.1.7.RELEASE.jar:/root/.m2/repository/org/springframework/boot/spring-boot-starter-jetty/1.1.7.RELEASE/spring-boot-starter-jetty-1.1.7.RELEASE.jar:/root/.m2/repository/org/springframework/boot/spring-boot-starter-actuator/1.1.7.RELEASE/spring-boot-starter-actuator-1.1.7.RELEASE.jar:/root/.m2/repository/commons-logging/commons-logging/1.0.4/commons-logging-1.0.4.jar:/root/.m2/repository/org/springframework/boot/spring-boot-starter/1.1.7.RELEASE/spring-boot-starter-1.1.7.RELEASE.jar:/root/.m2/repository/org/eclipse/jetty/orbit/javax.el/2.2.0.v201108011116/javax.el-2.2.0.v201108011116.jar:/root/.m2/repository/org/eclipse/jetty/jetty-xml/8.1.15.v20140411/jetty-xml-8.1.15.v20140411.jar:/root/.m2/repository/org/eclipse/jetty/jetty-security/8.1.15.v20140411/jetty-security-8.1.15.v20140411.jar:/root/.m2/repository/commons-codec/commons-codec/1.10/commons-codec-1.10.jar:/root/.m2/repository/org/eclipse/jetty/jetty-server/8.1.15.v20140411/jetty-server-8.1.15.v201
+root     23268  0.0  0.0  98164  4440 ?        Ss   09:43   0:00 sshd: root@pts/0 
+root     23270  0.2  0.0 110332  3808 pts/0    Ss   09:43   0:00 -bash
+root     23354  0.0  0.0 118712  1104 pts/0    S+   09:43   0:00 screen -dR
+root     23397  0.0  0.0   4072   500 ?        S    09:43   0:00 sleep 60
+root     23399  0.0  0.0 110244  1132 pts/3    R+   09:43   0:00 ps aux

@@ -9,6 +9,7 @@ import com.gsc.federator.services.SummaryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,13 +27,12 @@ public class FederatorController {
 
 
     @RequestMapping("/search")
-    public SearchResultContainer search(@RequestParam(value = "q", required = true) String query) {
-        final SearchQuery searchQuery = new SearchQuery(query);
-        final SearchResultContainer searchResultContainer = new SearchResultContainer(query);
+    public SearchResultContainer search(
+            @RequestBody SearchQuery searchQuery) {
 
-        searchService.peformSearch(searchQuery, searchResultContainer);
+        logger.info("Searching for [{}]", searchQuery);
 
-        return searchResultContainer;
+        return searchService.peformSearch(searchQuery);
     }
 
     @RequestMapping("/summarize")

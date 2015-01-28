@@ -7,10 +7,10 @@ angular.module('FederatorApp.services', []).
 
         return {
             search: function (query) {
-                return $http.get('/search?q=' + encodeURIComponent(query));
+                return $http.post('search', query);
             },
             summarize: function (source, url) {
-                return $http.get('/summarize?s=' + encodeURIComponent(source) + '&u=' + encodeURIComponent(url));
+                return $http.get('summarize?s=' + encodeURIComponent(source) + '&u=' + encodeURIComponent(url));
             }
         };
     });
