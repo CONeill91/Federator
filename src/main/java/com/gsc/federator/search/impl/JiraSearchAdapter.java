@@ -1,16 +1,20 @@
 package com.gsc.federator.search.impl;
 
 import com.gsc.federator.model.*;
+import com.gsc.federator.search.CookieReader;
 import com.gsc.federator.search.SearchAdapter;
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * User: msaccotelli
@@ -20,6 +24,10 @@ import java.io.IOException;
 public class JiraSearchAdapter implements SearchAdapter {
 
     private static final Logger logger = LoggerFactory.getLogger(JiraSearchAdapter.class);
+
+    @Autowired
+    private CookieReader cookieReader;
+
 
     @Override
     public String getName() {
@@ -31,17 +39,20 @@ public class JiraSearchAdapter implements SearchAdapter {
 
         // https://jira.guidewire.com/issues/?jql=text%20~%20%22ISO8601DateFormat%22
 
-        final Document doc = Jsoup.connect("https://jira.guidewire.com/issues/?jql=text%20~%20%22" + searchQuery.getQuery() + "%22").
-                cookie("seraph.rememberme.cookie", "41660%3A9b87214f5d7aaf62fef567016896c2c3386f0b57").
-                cookie("_ga", "GA1.2.982632285.1422026701").
-                cookie("JSESSIONID", "A8905E669A066AF71E70DB58C18CB5D0").
-                cookie("atlassian.xsrf.token", "AFZ7-DEUI-835B-CBSC|796e069bd7fe2a12a00341d5a86ce2d3928f3124|lin").
-                get();
+        final List<Cookie> cookies = cookieReader.readCookies(this);
+
+        final Connection connection = Jsoup.connect("https://jira.guidewire.com/issues/?jql=text%20~%20%22" + searchQuery.getQuery() + "%22");
+
+        for (final Cookie cookie : cookies) {
+            connection.cookie(cookie.getName(), cookie.getValue());
+        }
+
+        final Document doc = connection.get();
 
         final Elements results = doc.select("div ol li");
 
         for (final Element result : results) {
-              try {
+            try {
                 final SearchResult searchResult = new SearchResult();
 
                 searchResult.setSource(this.getName());

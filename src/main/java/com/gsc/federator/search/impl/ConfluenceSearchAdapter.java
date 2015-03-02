@@ -29,10 +29,8 @@ public class ConfluenceSearchAdapter implements SearchAdapter {
     @Override
     public void peformSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException {
 
-        final Document doc = Jsoup.connect("https://confluence.guidewire.com/dosearchsite.action?queryString=" + searchQuery.getQuery()).
-//                cookie("seraph.confluence", "32407755%3Aeb8165980ba3c95e4ce79dec7e8cab032b35f7f5").
-//                cookie("JSESSIONID", "4875ED3BE473C9CC34BC27814C4E1DD0").
-                get();
+        final Document doc = Jsoup.connect(
+                "https://confluence.guidewire.com/dosearchsite.action?queryString=" + searchQuery.getQuery()).get();
 
         final Elements results = doc.select("ul.search-results li");
 

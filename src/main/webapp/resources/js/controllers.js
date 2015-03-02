@@ -48,6 +48,9 @@ angular.module('FederatorApp.controllers', []).
                         $scope.results = $scope.results.concat(payload.data['searchResults']);
                         $scope.inflight--;
                         $scope.searched = true;
+                    }, function () {
+                        // decrease even in case of error
+                        $scope.inflight--;
                     });
             });
         };
