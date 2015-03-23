@@ -1,6 +1,7 @@
 package com.gsc.federator.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -18,13 +19,20 @@ public class SearchResultContainer implements ModelObject {
     }
 
     public List<SearchResult> getSearchResults() {
-        return searchResults;
+        return Collections.unmodifiableList(searchResults);
     }
 
+    /**
+     * Adds a searchResult to the list of SearchResults, avoiding duplicate titles
+     *
+     * @param searchResult
+     */
     public void addSearchResult(final SearchResult searchResult) {
         if (searchResult.getTitle() == null || searchResult.getTitle().length() == 0) {
             return;
         }
+
+        // TODO msaccotelli : handle duplicates *after* removing mailing list tags
 
         for (final SearchResult searchResultExisting : searchResults) {
             if (searchResultExisting.getTitle().equalsIgnoreCase(searchResult.getTitle())) {

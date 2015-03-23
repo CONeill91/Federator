@@ -14,9 +14,27 @@ import java.io.IOException;
  */
 @Component
 public interface SearchAdapter {
+    /**
+     * @return Adapter name
+     */
     String getName();
 
+    /**
+     * Performs search
+     *
+     * @param searchQuery
+     * @param searchResultContainer
+     * @throws IOException
+     */
     void peformSearch(SearchQuery searchQuery, SearchResultContainer searchResultContainer) throws IOException;
 
+
+    /**
+     * Summarizes page's content
+     *
+     * @param summaryRequest
+     * @return
+     * @throws IOException
+     */
     SummaryResult summarize(SummaryRequest summaryRequest) throws IOException;
 }
