@@ -1,7 +1,9 @@
 package com.gsc.federator.model;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -9,6 +11,8 @@ import java.util.List;
  * Date: 10/10/2014
  */
 public class SearchResultContainer implements ModelObject {
+    private static final Logger logger = LoggerFactory.getLogger(SearchResultContainer.class);
+
     private final List<SearchResult> searchResults;
 
     private final String query;
@@ -19,7 +23,7 @@ public class SearchResultContainer implements ModelObject {
     }
 
     public List<SearchResult> getSearchResults() {
-        return Collections.unmodifiableList(searchResults);
+        return searchResults;
     }
 
     /**
@@ -40,7 +44,8 @@ public class SearchResultContainer implements ModelObject {
             }
         }
 
+        logger.info("Got Result {}", searchResult);
+
         searchResults.add(searchResult);
     }
-
 }
