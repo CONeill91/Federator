@@ -4,5 +4,6 @@
 angular.module('FederatorApp', [
     'FederatorApp.directives',
     'FederatorApp.controllers',
-    'FederatorApp.services'
+    'FederatorApp.services',
+    'FederatorApp.filters'
 ]);

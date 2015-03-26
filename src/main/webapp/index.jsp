@@ -13,6 +13,7 @@
     <script src="resources/js/services.js"></script>
     <script src="resources/js/directives.js"></script>
     <script src="resources/js/controllers.js"></script>
+    <script src="resources/js/filters.js"></script>
     <style>
         .custom80 {
             width: 80px !important;
@@ -26,6 +27,11 @@
         a.result {
             font-size: larger;
         }
+
+        .highlighted {
+            background: yellow;
+        }
+
     </style>
 </head>
 
@@ -68,15 +74,16 @@
                         <th>Result ({{results.length}}) {{inflight ? 'In progress..' : ''}}</th>
                         <th>Source</th>
                     </tr>
+                    {{query}}
                     </thead>
                     <tbody>
-                    <tr data-ng-repeat="result in results | orderBy: ['source', 'title']">
-                        <td>
-                            <b><a target="_blank"
+                    <tr data-ng-repeat="result in results | orderBy: ['source', 'title']" >
+                        <td >
+                            <b ><a ng-bind-html="result.title | highlight:query" target="_blank"
                                   href="{{result.href}}"
                                   class="result"
-                                  title="{{result.title}}">{{result.title}}</a></b><br/>
-                            {{result.content}}
+                                  title="{{result.title}}">{{result.title }}</a></b><br/>
+                          <p ng-bind-html="result.content | highlight:query" >{{result.content }}</p>
                         </td>
                         <td>{{result.source}}</td>
 
