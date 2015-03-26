@@ -9,13 +9,26 @@ angular.module('FederatorApp.controllers', []).
         $scope.searchLocations = [
             'Confluence',
             'Jira',
-            'Mail:PL',
+            'Mail:PL',//this is mail:pl
             'Mail:BC',
             'Mail:CC',
-            'Mail:PC',
+            'Mail:PC', // this is mail:pc
             'Intranet',
             'Wiki'
         ];
+
+        $scope.activateTab = function(activeTab) {
+            console.log('This is what the active tab is... %s', activeTab);
+            $scope.activeTab = activeTab;
+            console.log('Active Tab is now %s', $scope.activeTab);
+        }
+
+        $scope.filterResults = function(result){// this is the filter which is called in the index class and "result" is passed over from the index class
+           console.log("The result.source is shown below");
+           console.log(result.source);
+           console.log('Active tab is %s, source is %s', $scope.activeTab, result.source);  // This is where I think my error could be... Active tab is Mail:PC, source is Mail:P
+           return !$scope.activeTab || result.source === $scope.activeTab;
+        }
 
         $scope.search = {
             searchIn: angular.copy($scope.searchLocations)
@@ -64,5 +77,4 @@ angular.module('FederatorApp.controllers', []).
                     $scope.summary = payload.data['content'];
                 });
         };
-
     });
