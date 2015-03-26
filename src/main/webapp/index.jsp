@@ -13,6 +13,8 @@
     <script src="resources/js/services.js"></script>
     <script src="resources/js/directives.js"></script>
     <script src="resources/js/controllers.js"></script>
+    <script src="resources/js/filters.js"></script>
+
     <style>
         .custom80 {
             width: 80px !important;
@@ -21,6 +23,17 @@
 
         input[type="checkbox"] {
             margin-left: 10px
+        }
+
+        .box{
+            display: none;
+            width: 100%;
+        }
+
+        a:hover + .box,.box:hover{
+            display: block;
+            position: relative;
+            z-index: 100;
         }
 
         a.result {
@@ -75,7 +88,7 @@
                             <b><a target="_blank"
                                   href="{{result.href}}"
                                   class="result"
-                                  title="{{result.title}}">{{result.title}}</a></b><br/>
+                                  title="{{result.title}}">{{result.title | mailTrim : result.source}}</a><div class="box"><iframe src="{{result.href | trustUrl}}" scrolling ="no" width = "500" height = "300" seamless></iframe></div></b><br/>
                             {{result.content}}
                         </td>
                         <td>{{result.source}}</td>
