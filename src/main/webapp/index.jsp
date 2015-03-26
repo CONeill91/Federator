@@ -13,6 +13,8 @@
     <script src="resources/js/services.js"></script>
     <script src="resources/js/directives.js"></script>
     <script src="resources/js/controllers.js"></script>
+    <script src="resources/js/filters.js"></script>
+
     <style>
         .custom80 {
             width: 80px !important;
@@ -23,9 +25,25 @@
             margin-left: 10px
         }
 
+        .box{
+            display: none;
+            width: 100%;
+        }
+
+        a:hover + .box,.box:hover{
+            display: block;
+            position: relative;
+            z-index: 100;
+        }
+
         a.result {
             font-size: larger;
         }
+
+        .highlighted {
+            background: yellow;
+        }
+
     </style>
 </head>
 
@@ -68,15 +86,16 @@
                         <th>Result ({{results.length}}) {{inflight ? 'In progress..' : ''}}</th>
                         <th>Source</th>
                     </tr>
+                    {{query}}
                     </thead>
                     <tbody>
-                    <tr data-ng-repeat="result in results | orderBy: ['source', 'title']">
+                    <tr data-ng-repeat="result in results | orderBy: ['source', 'title']" >
                         <td>
-                            <b><a target="_blank"
+                            <b><a ng-bind-html="result.title" | highlight:query 
                                   href="{{result.href}}"
                                   class="result"
-                                  title="{{result.title}}">{{result.title}}</a></b><br/>
-                            {{result.content}}
+                                  title="{{result.title}}">{{result.title  | mailTrim : result.source}}</a><div class="box"><iframe src="{{result.href | trustUrl}}" scrolling ="no" width = "500" height = "300" seamless></iframe></div></b><br/>
+                          <p ng-bind-html="result.content | highlight:query" >{{result.content }}</p>
                         </td>
                         <td>{{result.source}}</td>
 
