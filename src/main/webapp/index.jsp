@@ -90,14 +90,12 @@
                     </thead>
                     <tbody>
                     <tr data-ng-repeat="result in results | orderBy: ['source', 'title']" >
-                        <td >
-                            <b ><a ng-bind-html="result.title | highlight:query" target="_blank"
+                        <td>
+                            <b><a ng-bind-html="result.title" | highlight:query 
                                   href="{{result.href}}"
                                   class="result"
-                                  title="{{result.title}}">{{result.title  | mailTrim : result.source}}</a><div class="box"><iframe src="{{result.href | trustUrl}}" scrolling ="no" width = "500" height = "300" seamless></iframe></div> </a></b><br/>
+                                  title="{{result.title}}">{{result.title  | mailTrim : result.source}}</a><div class="box"><iframe src="{{result.href | trustUrl}}" scrolling ="no" width = "500" height = "300" seamless></iframe></div></b><br/>
                           <p ng-bind-html="result.content | highlight:query" >{{result.content }}</p>
-                                  
-                            {{result.content}}
                         </td>
                         <td>{{result.source}}</td>
 
