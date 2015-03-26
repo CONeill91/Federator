@@ -6,4 +6,4 @@ angular.module('FederatorApp', [
     'FederatorApp.controllers',
     'FederatorApp.services',
     'FederatorApp.filters'
-]);
+    ]);

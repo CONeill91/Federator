@@ -6,10 +6,15 @@ angular.module('FederatorApp.filters', []).filter('mailTrim', function() {
                 input = input.slice(index + 1, input.length);
             }
         }
-        console.log(source);
         return input;
-    };
+    }
 })
+
+.filter('trustUrl', function($sce) {
+     return function(url) {
+        return $sce.trustAsResourceUrl(url);
+     };
+ })
 
 .filter('highlight', function($sce) {
     return function(text, phrase) {
