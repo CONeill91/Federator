@@ -34,6 +34,7 @@ angular.module('FederatorApp.directives', []).
             for (var i = 0; i < arr.length; i++) {
                 if (angular.equals(arr[i], item)) {
                     return arr;
+
                 }
             }
             arr.push(item);
