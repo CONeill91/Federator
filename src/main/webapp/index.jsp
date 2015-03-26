@@ -39,6 +39,11 @@
         a.result {
             font-size: larger;
         }
+
+        .highlighted {
+            background: yellow;
+        }
+
     </style>
 </head>
 
@@ -81,14 +86,17 @@
                         <th>Result ({{results.length}}) {{inflight ? 'In progress..' : ''}}</th>
                         <th>Source</th>
                     </tr>
+                    {{query}}
                     </thead>
                     <tbody>
-                    <tr data-ng-repeat="result in results | orderBy: ['source', 'title']">
-                        <td>
-                            <b><a target="_blank"
+                    <tr data-ng-repeat="result in results | orderBy: ['source', 'title']" >
+                        <td >
+                            <b ><a ng-bind-html="result.title | highlight:query" target="_blank"
                                   href="{{result.href}}"
                                   class="result"
-                                  title="{{result.title}}">{{result.title | mailTrim : result.source}}</a><div class="box"><iframe src="{{result.href | trustUrl}}" scrolling ="no" width = "500" height = "300" seamless></iframe></div></b><br/>
+                                  title="{{result.title}}">{{result.title  | mailTrim : result.source}}</a><div class="box"><iframe src="{{result.href | trustUrl}}" scrolling ="no" width = "500" height = "300" seamless></iframe></div> </a></b><br/>
+                          <p ng-bind-html="result.content | highlight:query" >{{result.content }}</p>
+                                  
                             {{result.content}}
                         </td>
                         <td>{{result.source}}</td>
