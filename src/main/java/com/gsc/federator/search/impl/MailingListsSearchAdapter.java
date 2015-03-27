@@ -73,7 +73,7 @@ public class MailingListsSearchAdapter implements SearchAdapter {
                 try {
                     final SearchResult searchResult = new SearchResult();
 
-                    searchResult.setSource(this.getName());
+                    searchResult.setSource(this.getName() + ":" + mailingList.substring(0, 2).toUpperCase());
                     searchResult.setHref(result.select("a").first().attr("href"));
                     searchResult.setTitle(result.select("a").first().text());
                     searchResult.setContent(result.select("dd").first().text());

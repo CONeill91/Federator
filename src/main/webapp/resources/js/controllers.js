@@ -9,13 +9,21 @@ angular.module('FederatorApp.controllers', []).
         $scope.searchLocations = [
             'Confluence',
             'Jira',
-            'Mail:PL',
+            'Mail:PL',//this is mail:pl
             'Mail:BC',
             'Mail:CC',
-            'Mail:PC',
+            'Mail:PC', // this is mail:pc
             'Intranet',
             'Wiki'
         ];
+
+        $scope.activateTab = function(activeTab) {
+            $scope.activeTab = activeTab;
+        }
+
+        $scope.filterResults = function(result){// this is the filter which is called in the index class and "result" is passed over from the index class
+           return !$scope.activeTab || result.source === $scope.activeTab;
+        }
 
         $scope.search = {
             searchIn: angular.copy($scope.searchLocations)
@@ -64,5 +72,4 @@ angular.module('FederatorApp.controllers', []).
                     $scope.summary = payload.data['content'];
                 });
         };
-
     });

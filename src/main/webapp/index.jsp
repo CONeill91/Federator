@@ -16,6 +16,7 @@
     <script src="resources/js/services.js"></script>
     <script src="resources/js/directives.js"></script>
     <script src="resources/js/controllers.js"></script>
+    <script src="resources/js/filters.js"></script>
     <style>
         .custom80 {
             width: 80px !important;
@@ -25,6 +26,23 @@
         input[type="checkbox"] {
             margin-left: 10px
         }
+
+
+        .highlighted {
+            background: yellow;
+        }
+
+        .box{
+            display: none;
+            width: 100%;
+        }
+
+        a:hover + .box,.box:hover{
+            display: block;
+            position: relative;
+            z-index: 100;
+        }
+
 
         a.result {
             font-size: larger;
@@ -87,6 +105,18 @@
             <span data-ng-show="!inflight && searched && results.length == 0">No results</span>  <!-- possibly call a function here? -->
             <i data-ng-show="inflight && results.length == 0">Please wait...</i>
 
+
+            <div>
+            <ul class ="nav nav-pills">
+            <li>
+                <a href ng-click="activateTab()">All</a>
+            </li>
+            <li ng-repeat="searchLocation in searchLocations">
+                <a href ng-click="activateTab(searchLocation)">{{searchLocation}}</a>
+            </li>
+            </ul>
+            </div>
+
             <div id="results" data-ng-show="results.length > 0">
                 <table class="table table-striped">
                     <thead>
@@ -94,19 +124,18 @@
                         <th>Result ({{results.length}}) {{inflight ? 'In progress..' : ''}}</th>
                         <th>Source</th>
                     </tr>
+                      {{query}}
                     </thead>
                     <tbody>
-                    <tr data-ng-repeat="result in results | orderBy: ['source', 'title']">
-                        <td>
-                            <b><a target="_blank"
-                                  href="{{result.href}}"
-                                  class="result"
-                                  title="{{result.title}}">{{result.title}}</a></b><br/>
-                            {{result.content}}
-                        </td>
-                        <td>{{result.source}}</td>
-
-                    </tr>
+                   <tr data-ng-repeat="result in results | filter: filterResults | orderBy: ['source', 'title']" >
+                      <td>
+                          <b><a ng-bind-html="result.title" | highlight:query
+                                href="{{result.href}}"
+                                class="result"
+                                title="{{result.title}}">{{result.title  | mailTrim : result.source}}</a><div class="box"><iframe src="{{result.href | trustUrl}}" scrolling ="no" width = "500" height = "300" seamless></iframe></div></b><br/>
+                        <p ng-bind-html="result.content | highlight:query" >{{result.content }}</p>
+                      </td>
+                      <td>{{result.source}}</td>
                     </tbody>
                 </table>
                 <br>
