@@ -17,37 +17,7 @@
     <script src="resources/js/directives.js"></script>
     <script src="resources/js/controllers.js"></script>
     <script src="resources/js/filters.js"></script>
-    <style>
-        .custom80 {
-            width: 80px !important;
-            margin-left: 10px;
-        }
 
-        input[type="checkbox"] {
-            margin-left: 10px
-        }
-
-
-        .highlighted {
-            background: yellow;
-        }
-
-        .box{
-            display: none;
-            width: 100%;
-        }
-
-        a:hover + .box,.box:hover{
-            display: block;
-            position: relative;
-            z-index: 100;
-        }
-
-
-        a.result {
-            font-size: larger;
-        }
-    </style>
 </head>
 
 <body data-ng-controller="SearchController">
@@ -100,22 +70,22 @@
 
 <!-- End Header -->
 
+    <!-- Gareths tabs -->
+         <div class="tabs" ng-show="results.length != 0" style="clear:both;"> <!-- tabs will only display if there are results -->
+             <ul class ="nav nav-tabs">
+                <li>
+                    <a href ng-click="activateTab()">All</a>
+                </li>
+                <li ng-repeat="searchLocation in searchLocations">
+                    <a href ng-click="activateTab(searchLocation)">{{searchLocation}}</a>
+                </li>
+             </ul>
+         </div>
+
     <div class="row">
         <div class="col-md-12">
             <span data-ng-show="!inflight && searched && results.length == 0">No results</span>  <!-- possibly call a function here? -->
             <i data-ng-show="inflight && results.length == 0">Please wait...</i>
-
-
-            <div>
-            <ul class ="nav nav-pills">
-            <li>
-                <a href ng-click="activateTab()">All</a>
-            </li>
-            <li ng-repeat="searchLocation in searchLocations">
-                <a href ng-click="activateTab(searchLocation)">{{searchLocation}}</a>
-            </li>
-            </ul>
-            </div>
 
             <div id="results" data-ng-show="results.length > 0">
                 <table class="table table-striped">
@@ -124,7 +94,6 @@
                         <th>Result ({{results.length}}) {{inflight ? 'In progress..' : ''}}</th>
                         <th>Source</th>
                     </tr>
-                      {{query}}
                     </thead>
                     <tbody>
                    <tr data-ng-repeat="result in results | filter: filterResults | orderBy: ['source', 'title']" >
@@ -153,8 +122,8 @@
         <a style="padding-left: 10px" href="https://confluence.guidewire.com/">Confluence</a>
         <a style="padding-left: 10px" href="https://jira.guidewire.com">Jira</a>
         <a style="padding-left: 10px" href="http://mailman.guidewire.com/mailman/listinfo">Mailing List</a>
-        <a style="padding-left: 10px" href="https://our.guidewire.com/pages/intranet.aspx">Guidewire Intranet</a>
-        <a style="padding-left: 10px" href="http://wiki.guidewire.com">Guidewire Wiki</a>
+        <a style="padding-left: 10px" href="https://our.guidewire.com/pages/intranet.aspx">Intranet</a>
+        <a style="padding-left: 10px" href="http://wiki.guidewire.com">Wiki</a>
         <a style="padding-left: 10px" href="http://wd5.myworkday.com/guidewire/login.flex">Workday</a>
       </div>
       <img src="resources\images\rainbow-bar.png">
