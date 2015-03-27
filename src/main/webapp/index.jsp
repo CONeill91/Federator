@@ -120,7 +120,7 @@
 <footer class="navbar navbar-default navbar-fixed-bottom">
       <br>
       <div align="center" class="container">
-        <a style="padding-left: 10px" href="http://home.guidewire.com/">Home</a>
+        <a style="padding-left: 11px" href="http://home.guidewire.com/">Home</a>
         <a style="padding-left: 10px" href="https://confluence.guidewire.com/">Confluence</a>
         <a style="padding-left: 10px" href="https://jira.guidewire.com">Jira</a>
         <a style="padding-left: 10px" href="http://mailman.guidewire.com/mailman/listinfo">Mailing List</a>
