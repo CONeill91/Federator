@@ -53,7 +53,7 @@ public class SharepointSearchAdapter implements SearchAdapter {
                 searchResult.setContent(content.get(index).toString());
                 searchResultContainer.addSearchResult(searchResult);
             } catch (Exception ex) {
-                    logger.error("Error selecting element {}", result.outerHtml(), ex);
+                     logger.error("Error selecting element {}", result.outerHtml(), ex);
             }
         }
 
