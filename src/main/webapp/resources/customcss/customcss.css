@@ -1,0 +1,78 @@
+.btn {
+   border-radius: 0px;
+   background-color: #0068AC;
+}
+
+.btn.round {
+   border-radius: 24px;
+}
+
+.chatter{
+  background-color:#67a0cf;
+  border:1px outset #2683cf;
+  color:#fff;
+  padding:3px 3px 3px 3px;
+  margin:1px;
+  text-decoration:none;
+  width: 80px;
+  height: 35px;
+  float: right;
+}
+.chatter:hover {
+  background-color:#5788af;
+  border:1px outset #2683cf;
+  color:#fcffdf;
+  padding:3px 3px 3px 3px;
+  margin:1px;
+  text-decoration:none;
+}
+.chatter:active {
+  background-color:#67b4cf;
+  border:1px inset #1d659f;
+  color:#e0ffaf;
+  padding:4px 2px 2px 4px;
+  margin:1px;
+  text-decoration:none;
+}
+
+.custom80 {
+  width: 80px !important;
+  margin-left: 10px;
+}
+
+input[type="checkbox"] {
+  margin-left: 10px
+}
+
+.highlighted {
+  background: yellow;
+}
+
+.box {
+  display: none;
+  width: 100%;
+}
+
+a:hover + .box,.box:hover {
+  display: block;
+  position: relative;
+  z-index: 100;
+}
+
+a.result {
+  font-size: larger;
+}
+
+.tabs {
+  padding:10px;
+  background:white;
+}
+
+.tabs {
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+
+.tabs.ng-hide {
+  opacity:0;
+}

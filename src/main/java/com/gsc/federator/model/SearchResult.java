@@ -34,6 +34,14 @@ public class SearchResult implements ModelObject {
         return source;
     }
 
+    @Override
+    public String toString() {
+        return "SearchResult{" +
+                "source='" + source + '\'' +
+                ", title='" + title + '\'' +
+                '}';
+    }
+
     public void setSource(final String source) {
         this.source = source;
     }
