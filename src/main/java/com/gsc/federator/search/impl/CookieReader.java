@@ -43,7 +43,7 @@ public class CookieReader implements com.gsc.federator.search.CookieReader {
             } catch (IOException e) {
                 logger.error("Error reading file {}", fCookies.getAbsolutePath(), e);
             }
-        } else {
+        } else{
             logger.warn("No such cookies file {}", fCookies.getAbsolutePath());
         }
 
