@@ -16,10 +16,19 @@ angular.module('FederatorApp.filters', []).filter('mailTrim', function() {
      };
  })
 
+
+
 .filter('highlight', function($sce) {
     return function(text, phrase) {
-        if (phrase) text = text.replace(new RegExp('(' + phrase + ')', 'gi'),
-            '<span class="highlighted">$1</span>')
+        if (phrase && text){
+            var res = phrase.split(" ");
+            var arrayLength = res.length;
+            for(var i =0; i < arrayLength; i++){
+
+                text = text.replace(new RegExp('(' + res[i] + ')', 'gi'), '<span class="highlighted">$1</span>')
+            }
+
+        }
 
         return $sce.trustAsHtml(text);
     }

@@ -5,24 +5,35 @@
 angular.module('FederatorApp.controllers', []).
     controller('SearchController', function ($scope, SearchService) {
         $scope.results = [];
-
         $scope.searchLocations = [
             'Confluence',
             'Jira',
-            'Mail:PL',//this is mail:pl
+            'Mail:PL',
             'Mail:BC',
             'Mail:CC',
-            'Mail:PC', // this is mail:pc
+            'Mail:PC',
             'Intranet',
-            'Wiki'
+            'KB Articles'
+            'Wiki',
+            'Sharepoint'
         ];
+
+        $scope.countResultsForSource = function(results, source) {
+            var count = 0;
+            results.forEach(function(r) {
+                if(r.source === source) {
+                    count++;
+                }
+            });
+            return count;
+        }
 
         $scope.activateTab = function(activeTab) {
             $scope.activeTab = activeTab;
         }
 
-        $scope.filterResults = function(result){// this is the filter which is called in the index class and "result" is passed over from the index class
-           return !$scope.activeTab || result.source === $scope.activeTab;
+        $scope.filterResults = function(result){
+            return !$scope.activeTab || result.source === $scope.activeTab;
         }
 
         $scope.search = {
@@ -48,7 +59,6 @@ angular.module('FederatorApp.controllers', []).
                         searchIn: [value]
                     }
                 );
-
                 $scope.inflight++;
 
                 searchPromise.then(
@@ -71,5 +81,17 @@ angular.module('FederatorApp.controllers', []).
                     //console.log(payload);
                     $scope.summary = payload.data['content'];
                 });
+        };
+
+        $scope.storeData = function(href){
+
+            SearchService.store(href);
+
+        };
+        //written by danny sends link & query to store service
+        $scope.storeLink = function(link,query) {
+            // Remember the link href
+            SearchService.store(link,query);
+
         };
     });
