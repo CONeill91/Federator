@@ -37,9 +37,6 @@
     </div>
 
     <div class="container-fluid">
-
-        <br>
-
         <div class="row">
             <div class="col-md-12">
 
@@ -77,7 +74,7 @@
                     <a href ng-click="activateTab()">All</a>
                 </li>
                 <li ng-repeat="searchLocation in searchLocations">
-                    <a href ng-click="activateTab(searchLocation)">{{searchLocation}}</a>
+                    <a href ng-click="activateTab(searchLocation)">{{searchLocation}} ({{countResultsForSource(results, searchLocation)}})</a>
                 </li>
              </ul>
          </div>

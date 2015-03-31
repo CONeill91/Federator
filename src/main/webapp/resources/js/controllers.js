@@ -15,7 +15,7 @@ angular.module('FederatorApp.controllers', []).
             'Intranet',
             'Wiki'
         ];
-
++
         $scope.countResultsForSource = function(results, source) {
             var count = 0;
             results.forEach(function(r) {
