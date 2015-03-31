@@ -9,7 +9,7 @@
     <title>Federator</title>
 
     <link rel='stylesheet' href='webjars/bootstrap/3.1.0/css/bootstrap.min.css'>
-    <link rel='stylesheet' href='resources\customcss\customcss.css'>  <!-- Custom stylesheet override -->
+    <link rel='stylesheet' href='resources/customcss/customcss.css'>  <!-- Custom stylesheet override -->
 
     <script src="webjars/angularjs/1.2.26/angular.min.js"></script>
     <script src="resources/js/app.js"></script>
@@ -17,6 +17,8 @@
     <script src="resources/js/directives.js"></script>
     <script src="resources/js/controllers.js"></script>
     <script src="resources/js/filters.js"></script>
+
+     <link rel="shortcut icon" href="resources/images/favicon.ico" /> <!-- Favicon link to file -->
 
 </head>
 
@@ -27,10 +29,11 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <img src="resources\images\rainbow-bar.png">
+      <img src="resources/images/rainbow-bar.png">
       <a class="navbar-brand" href="index.jsp">
-        <img src="resources\images\guidewire-logo.png">
+        <img src="resources/images/guidewire-logo.png">
       </a>
+              <h1>Federator</h1>
     </div>
 
     <div class="container-fluid">
@@ -39,8 +42,6 @@
 
         <div class="row">
             <div class="col-md-12">
-
-                <br>
 
                 <form data-ng-submit="doParallelSearch()">
 
@@ -54,12 +55,11 @@
                         <input type="checkbox" checklist-model="search.searchIn" checklist-value="searchLocation">
                         {{searchLocation}}
                     </label>
-                    <input class="btn btn-primary custom80" type="button" ng-click="checkAll()" value="All">
-                    <input class="btn btn-primary custom80" type="button" ng-click="uncheckAll()" value="None">
+                    <input class="btn btn-primary custom80" type="button" ng-click="checkAll()" value="Select All">
+                    <input class="btn btn-primary custom80" type="button" ng-click="uncheckAll()" value="Clear All">
 
-                      <a href="https://guidewire.my.salesforce.com">
-                         <img class="chatter" src="resources\images\chatter-logo.png">
-                      </a>
+                    <a id="support"  href="mailto:msaccotelli@guidewire.com?Subject=Federator:%20Support%20Issue" target="_top"><span class="glyphicons glyphicons-circle-question-mark"></span>Support</a> <!-- Support Mail Link -->
+
                 </form>
 
                 <br>
@@ -126,7 +126,7 @@
         <a style="padding-left: 10px" href="http://wiki.guidewire.com">Wiki</a>
         <a style="padding-left: 10px" href="http://wd5.myworkday.com/guidewire/login.flex">Workday</a>
       </div>
-      <img src="resources\images\rainbow-bar.png">
+      <img src="resources/images/rainbow-bar.png">
     </footer>
 </body>
 </html>

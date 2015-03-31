@@ -1,3 +1,10 @@
+h1 {
+    font-family: Calibri;
+    font-weight: bold;
+    color: #0068AC;
+    font-size: 290%;
+}
+
 .btn {
    border-radius: 0px;
    background-color: #0068AC;
@@ -7,32 +14,9 @@
    border-radius: 24px;
 }
 
-.chatter{
-  background-color:#67a0cf;
-  border:1px outset #2683cf;
-  color:#fff;
-  padding:3px 3px 3px 3px;
-  margin:1px;
-  text-decoration:none;
-  width: 80px;
-  height: 35px;
-  float: right;
-}
-.chatter:hover {
-  background-color:#5788af;
-  border:1px outset #2683cf;
-  color:#fcffdf;
-  padding:3px 3px 3px 3px;
-  margin:1px;
-  text-decoration:none;
-}
-.chatter:active {
-  background-color:#67b4cf;
-  border:1px inset #1d659f;
-  color:#e0ffaf;
-  padding:4px 2px 2px 4px;
-  margin:1px;
-  text-decoration:none;
+.nav {
+   font-size: larger;
+   font-weight: bold;
 }
 
 .custom80 {
@@ -63,16 +47,7 @@ a.result {
   font-size: larger;
 }
 
-.tabs {
-  padding:10px;
-  background:white;
-}
-
-.tabs {
-  -webkit-transition:all linear 0.5s;
-  transition:all linear 0.5s;
-}
-
-.tabs.ng-hide {
-  opacity:0;
+#support {
+  float: right;
+  font-weight: bold;
 }

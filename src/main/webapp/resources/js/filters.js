@@ -1,6 +1,6 @@
 angular.module('FederatorApp.filters', []).filter('mailTrim', function() {
     return function(input,source) {
-        if(source == "Mail:PL" || source == "Mail:BC" || source == "Mail:CC" || source == "Mail:PC"){
+        if(source === "Mail:PL" || source === "Mail:BC" || source === "Mail:CC" || source === "Mail:PC"){
             var index = input.lastIndexOf("]");
             if (index > 0) {
                 input = input.slice(index + 1, input.length);
