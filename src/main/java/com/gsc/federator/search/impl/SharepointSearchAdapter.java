@@ -13,37 +13,50 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 /**
- * User: msaccotelli
- * Date: 10/13/2014
+ * Created by coneill on 26/03/2015.
  */
 @Component
-public class WikiSearchAdapter implements SearchAdapter {
+public class SharepointSearchAdapter implements SearchAdapter {
 
-    private static final Logger logger = LoggerFactory.getLogger(WikiSearchAdapter.class);
+    private static final Logger logger = LoggerFactory.getLogger(SharepointSearchAdapter.class);
 
     @Override
     public String getName() {
-        return "Wiki";
+        return "Sharepoint";
     }
 
     @Override
     public void peformSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException {
-        final Document doc = Jsoup.connect("http://wiki/index.php?title=Special%3ASearch&search=" + searchQuery.getQuery() + "&fulltext=Search").get();
-        final Elements results = doc.select("ul.mw-search-results li");
+
+        final Document doc = Jsoup.connect(
+               "https://sharepoint.guidewire.com/searchcenter/pages/Results.aspx?k=" + searchQuery.getQuery() + "&s=All%20Sites&start1=1").get();
+
+
+
+
+        final Elements results = doc.getElementsByClass("srch-Title3");
+        // Content is not contained in the same tags as Title & Link
+        final Elements content = doc.getElementsByClass("srch-Description2");
 
         for (final Element result : results) {
+            int index = results.indexOf(result);
+
+            if (result.select("a").size() == 0) {
+                continue;
+            }
+
             try {
                 final SearchResult searchResult = new SearchResult();
-
                 searchResult.setSource(this.getName());
-                searchResult.setHref("http://wiki" + result.select("a").first().attr("href"));
-                searchResult.setTitle(result.select("a").first().text());
-                searchResult.setContent(result.select("div.searchresult").first().text());
+                searchResult.setHref(result.select("a").first().attr("href"));
+                searchResult.setTitle(result.select("a").first().attr("title"));
+                searchResult.setContent(content.get(index).toString());
                 searchResultContainer.addSearchResult(searchResult);
             } catch (Exception ex) {
-                logger.error("Error selecting element {}", result.outerHtml(), ex);
+                     logger.error("Error selecting element {}", result.outerHtml(), ex);
             }
         }
+
     }
 
     @Override

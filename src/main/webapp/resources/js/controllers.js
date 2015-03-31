@@ -5,7 +5,6 @@
 angular.module('FederatorApp.controllers', []).
     controller('SearchController', function ($scope, SearchService) {
         $scope.results = [];
-
         $scope.searchLocations = [
             'Confluence',
             'Jira',
@@ -14,8 +13,9 @@ angular.module('FederatorApp.controllers', []).
             'Mail:CC',
             'Mail:PC',
             'Intranet',
-            'Wiki',
             'KB Articles'
+            'Wiki',
+            'Sharepoint'
         ];
 
         $scope.countResultsForSource = function(results, source) {
@@ -32,8 +32,8 @@ angular.module('FederatorApp.controllers', []).
             $scope.activeTab = activeTab;
         }
 
-        $scope.filterResults = function(result){// this is the filter which is called in the index class and "result" is passed over from the index class
-           return !$scope.activeTab || result.source === $scope.activeTab;
+        $scope.filterResults = function(result){
+            return !$scope.activeTab || result.source === $scope.activeTab;
         }
 
         $scope.search = {
@@ -59,7 +59,6 @@ angular.module('FederatorApp.controllers', []).
                         searchIn: [value]
                     }
                 );
-
                 $scope.inflight++;
 
                 searchPromise.then(
