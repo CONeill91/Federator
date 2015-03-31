@@ -51,9 +51,10 @@
                     <a style="padding-right: 75px"></a> <!-- empty element for space -->
 
                     <label ng-repeat="searchLocation in searchLocations">
-                        <input type="checkbox" checklist-model="search.searchIn" checklist-value="searchLocation">
-                        {{searchLocation}}
+                       <input type="checkbox" checklist-model="search.searchIn" checklist-value="searchLocation">
+                       {{searchLocation}}
                     </label>
+
                     <input class="btn btn-primary custom80" type="button" ng-click="checkAll()" value="All">
                     <input class="btn btn-primary custom80" type="button" ng-click="uncheckAll()" value="None">
 
@@ -68,21 +69,17 @@
   </div>
 </nav>
 
-<!-- End Header -->
-
-    <!-- Gareths tabs -->
-         <div class="tabs" ng-show="results.length != 0" style="clear:both;"> <!-- tabs will only display if there are results -->
-             <ul class ="nav nav-tabs">
-                <li>
-                    <a href ng-click="activateTab()">All</a>
-                </li>
-                <li ng-repeat="searchLocation in searchLocations">
-                    <a href ng-click="activateTab(searchLocation)">{{searchLocation}}</a>
-                </li>
-             </ul>
-         </div>
-
-    <div class="row">
+     <div class="tabs" ng-show="results.length != 0" style="clear:both;"> <!-- tabs will only display if there are results -->
+         <ul class ="nav nav-tabs">
+            <li>
+                <a href ng-click="activateTab()">All ({{results.length}})</a>
+            </li>
+            <li ng-repeat="searchLocation in searchLocations">
+                <a href ng-click="activateTab(searchLocation)">{{searchLocation}} ({{countResultsForSource(results, searchLocation)}})</a>
+            </li>
+         </ul>s
+     </div>
+     <div class="row">
         <div class="col-md-12">
             <span data-ng-show="!inflight && searched && results.length == 0">No results</span>  <!-- possibly call a function here? -->
             <i data-ng-show="inflight && results.length == 0">Please wait...</i>
@@ -96,15 +93,17 @@
                     </tr>
                     </thead>
                     <tbody>
-                   <tr data-ng-repeat="result in results | filter: filterResults | orderBy: ['source', 'title']" >
-                      <td>
-                          <b><a ng-bind-html="result.title" | highlight:query
-                                href="{{result.href}}"
-                                class="result"
-                                title="{{result.title}}">{{result.title  | mailTrim : result.source}}</a><div class="box"><iframe src="{{result.href | trustUrl}}" scrolling ="no" width = "500" height = "300" seamless></iframe></div></b><br/>
-                        <p ng-bind-html="result.content | highlight:query" >{{result.content }}</p>
-                      </td>
-                      <td>{{result.source}}</td>
+                       <tr data-ng-repeat="result in results | filter: filterResults | orderBy: ['source', 'title']">
+                          <td>
+                            <p ng-show = "countResults(result) != 0"> </p>
+                              <b><a ng-bind-html="result.title | highlight:query"
+                                    href="{{result.href}}"
+                                    class="result"
+                                    title="{{result.title}}">{{result.title  | mailTrim : result.source}}</a><div class="box"><iframe src="{{result.href | trustUrl}}" scrolling ="no" width = "500" height = "300" seamless></iframe></div></b><br/>
+                            <p ng-bind-html="result.content | highlight:query" >{{result.content }}</p>
+                          </td>
+                          <td>{{result.source}}</td>
+                       </tr>
                     </tbody>
                 </table>
                 <br>

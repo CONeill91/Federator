@@ -5,24 +5,33 @@
 angular.module('FederatorApp.controllers', []).
     controller('SearchController', function ($scope, SearchService) {
         $scope.results = [];
-
         $scope.searchLocations = [
             'Confluence',
             'Jira',
-            'Mail:PL',//this is mail:pl
+            'Mail:PL',
             'Mail:BC',
             'Mail:CC',
-            'Mail:PC', // this is mail:pc
+            'Mail:PC',
             'Intranet',
             'Wiki'
         ];
+
+        $scope.countResultsForSource = function(results, source) {
+            var count = 0;
+            results.forEach(function(r) {
+                if(r.source === source) {
+                    count++;
+                }
+            });
+            return count;
+        }
 
         $scope.activateTab = function(activeTab) {
             $scope.activeTab = activeTab;
         }
 
-        $scope.filterResults = function(result){// this is the filter which is called in the index class and "result" is passed over from the index class
-           return !$scope.activeTab || result.source === $scope.activeTab;
+        $scope.filterResults = function(result){
+            return !$scope.activeTab || result.source === $scope.activeTab;
         }
 
         $scope.search = {
@@ -37,6 +46,9 @@ angular.module('FederatorApp.controllers', []).
             $scope.search.searchIn = [];
         };
 
+
+
+
         $scope.doParallelSearch = function () {
             $scope.inflight = 0;
             $scope.results = [];
@@ -48,7 +60,6 @@ angular.module('FederatorApp.controllers', []).
                         searchIn: [value]
                     }
                 );
-
                 $scope.inflight++;
 
                 searchPromise.then(
@@ -56,10 +67,12 @@ angular.module('FederatorApp.controllers', []).
                         $scope.results = $scope.results.concat(payload.data['searchResults']);
                         $scope.inflight--;
                         $scope.searched = true;
+
                     }, function () {
                         // decrease even in case of error
                         $scope.inflight--;
                     });
+
             });
         };
 
