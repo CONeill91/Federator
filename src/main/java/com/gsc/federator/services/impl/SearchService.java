@@ -36,6 +36,8 @@ public class SearchService implements com.gsc.federator.services.SearchService {
                     searchAdapter.peformSearch(searchQuery, searchResultContainer);
 
                     logger.info("Searched in [{}]", searchAdapter);
+
+
                 }
             } catch (IOException e) {
                 logger.error("Unable to search [{}]", searchAdapter, e);

@@ -31,7 +31,7 @@ public class MailingListsSearchAdapter implements SearchAdapter {
         final String[] mailingLists = new String[]{
 //                "claimcenterdevmm",
 //                "billingcenterdevmm",
-//                "policycenterdevmm", 
+//                "policycenterdevmm",
 //                "platform-devmm",
                 "platform-supportmm",
                 "cc-supportmm",

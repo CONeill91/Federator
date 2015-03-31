@@ -13,9 +13,10 @@ angular.module('FederatorApp.controllers', []).
             'Mail:CC',
             'Mail:PC',
             'Intranet',
-            'Wiki'
+            'Wiki',
+            'Sharepoint'
         ];
-+
+
         $scope.countResultsForSource = function(results, source) {
             var count = 0;
             results.forEach(function(r) {
@@ -27,6 +28,7 @@ angular.module('FederatorApp.controllers', []).
         }
 
         $scope.activateTab = function(activeTab) {
+            console.log(activeTab)
             $scope.activeTab = activeTab;
         }
 
@@ -76,9 +78,11 @@ angular.module('FederatorApp.controllers', []).
             });
         };
 
+
+
         $scope.doSummary = function (result) {
             var summaryPromise = SearchService.summarize(result.source, result.href);
-
+            console.log(summaryPromise);
             summaryPromise.then(
                 function (payload) {
                     //console.log(payload);

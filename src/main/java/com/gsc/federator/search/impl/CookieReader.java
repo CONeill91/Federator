@@ -17,12 +17,13 @@ import java.util.List;
 @Component
 public class CookieReader implements com.gsc.federator.search.CookieReader {
     private static final Logger logger = LoggerFactory.getLogger(CookieReader.class);
-    private static final String basePath = "/opt/federator/";
+    private static final String basePath = "C:/opt/federator/";
 
     @Override
     public List<Cookie> readCookies(final SearchAdapter searchAdapter) {
         final File fCookies = new File(basePath, searchAdapter.getName() + ".cookies");
         final List<Cookie> cookies = new LinkedList<>();
+
 
         if (fCookies.exists() && fCookies.canRead()) {
             try {
