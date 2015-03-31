@@ -17,6 +17,18 @@
     <script src="resources/js/directives.js"></script>
     <script src="resources/js/controllers.js"></script>
     <script src="resources/js/filters.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <script>
+      $(function() {
+        $( document ).tooltip();
+      });
+    </script>
+
 
 </head>
 
@@ -93,17 +105,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                       <tr data-ng-repeat="result in results | filter: filterResults | orderBy: ['source', 'title']">
-                          <td>
-                            <p ng-show = "countResults(result) != 0"> </p>
-                              <b><a ng-bind-html="result.title | highlight:query"
-                                    href="{{result.href}}"
-                                    class="result"
-                                    title="{{result.title}}">{{result.title  | mailTrim : result.source}}</a><div class="box"><iframe src="{{result.href | trustUrl}}" scrolling ="no" width = "500" height = "300" seamless></iframe></div></b><br/>
-                            <p ng-bind-html="result.content | highlight:query" >{{result.content }}</p>
-                          </td>
-                          <td>{{result.source}}</td>
-                       </tr>
+                   <tr data-ng-repeat="result in results | filter: filterResults | orderBy: ['source', 'title']"   >
+                      <td>
+                          <b><a = "result.title"
+                                rel = "nofollow"
+                                href="{{result.href}}"
+                                class="result"
+                               title="{{result.title }}  {{result.content}}">{{result.title  | mailTrim : result.source }}</a></b><br/>
+                        <p ng-bind-html="result.content | highlight:query" >{{result.content }}</p>
+                      </td>
+                      <td>{{result.source}}</td>
                     </tbody>
                 </table>
                 <br>
