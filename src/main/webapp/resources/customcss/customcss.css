@@ -8,13 +8,11 @@ h1 {
 .btn {
    border-radius: 0px;
    background-color: #0068AC;
-}
-
-.btn.round {
-   border-radius: 24px;
+   color: white
 }
 
 .nav {
+   text-align: center;
    font-size: larger;
    font-weight: bold;
 }
@@ -22,6 +20,7 @@ h1 {
 .custom80 {
   width: 80px !important;
   margin-left: 10px;
+  text-color: white;
 }
 
 input[type="checkbox"] {
@@ -47,7 +46,14 @@ a.result {
   font-size: larger;
 }
 
-#support {
-  float: right;
-  font-weight: bold;
+#textbox {
+   height:35px;
+}
+
+#searchbar {
+ text-align: center;
+}
+
+#optionsbar {
+ text-align: center;
 }

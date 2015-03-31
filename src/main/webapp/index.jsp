@@ -28,38 +28,34 @@
 
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <div class="navbar-header">
+    <div class="navbar-header" style="text-align: center">
       <img src="resources/images/rainbow-bar.png">
-      <a class="navbar-brand" href="index.jsp">
-        <img src="resources/images/guidewire-logo.png">
+      <!--<a class="navbar-brand" href="index.jsp">
+        <!--<img src="resources/images/guidewire-logo.png"> -->
       </a>
-              <h1>Federator</h1>
+              <h1>Guidewire Federator</h1>
     </div>
 
     <div class="container-fluid">
-
-        <br>
 
         <div class="row">
             <div class="col-md-12">
 
                 <form data-ng-submit="doParallelSearch()">
 
-                    <button id="searchbutton" type="submit" class="btn btn-primary" data-ng-disabled="!query || inflight || search.searchIn.length == 0"><span class="glyphicon glyphicon-search"></span> Search</button>
-
-                    <input type="text" data-ng-model="query" placeholder="Search" data-auto-focus>
-
-                    <a style="padding-right: 75px"></a> <!-- empty element for space -->
-
-                    <label ng-repeat="searchLocation in searchLocations">
+                   <div id="searchbar">
+                       <input id="textbox" size="95" type="text" data-ng-model="query" placeholder="Search" data-auto-focus>
+                       <button id="searchbutton" type="submit" class="btn btn-primary" data-ng-disabled="!query || inflight || search.searchIn.length == 0"><span class="glyphicon glyphicon-search"></span> Search</button>
+                   </div>
+                    <br>
+                    <div id="optionsbar">
+                       <label ng-repeat="searchLocation in searchLocations">
                         <input type="checkbox" checklist-model="search.searchIn" checklist-value="searchLocation">
                         {{searchLocation}}
-                    </label>
-                    <input class="btn btn-primary custom80" type="button" ng-click="checkAll()" value="Select All">
-                    <input class="btn btn-primary custom80" type="button" ng-click="uncheckAll()" value="Clear All">
-
-                    <a id="support"  href="mailto:msaccotelli@guidewire.com?Subject=Federator:%20Support%20Issue" target="_top"><span class="glyphicons glyphicons-circle-question-mark"></span>Support</a> <!-- Support Mail Link -->
-
+                       </label>
+                    <input class="btn btn-xs custom80" type="button" ng-click="checkAll()" value="Select All">
+                    <input class="btn btn-xs custom80" type="button" ng-click="uncheckAll()" value="Clear All">
+                    </div>
                 </form>
 
                 <br>
@@ -125,6 +121,7 @@
         <a style="padding-left: 10px" href="https://our.guidewire.com/pages/intranet.aspx">Intranet</a>
         <a style="padding-left: 10px" href="http://wiki.guidewire.com">Wiki</a>
         <a style="padding-left: 10px" href="http://wd5.myworkday.com/guidewire/login.flex">Workday</a>
+        <a style="padding-left: 10px" href="mailto:msaccotelli@guidewire.com?Subject=Federator:%20Support%20Issue" target="_top"><span class="glyphicons glyphicons-circle-question-mark"></span>Support</a> <!-- Support Mail Link -->
       </div>
       <img src="resources/images/rainbow-bar.png">
     </footer>
