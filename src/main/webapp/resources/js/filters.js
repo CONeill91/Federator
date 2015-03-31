@@ -16,6 +16,8 @@ angular.module('FederatorApp.filters', []).filter('mailTrim', function() {
      };
  })
 
+
+
 .filter('highlight', function($sce) {
     return function(text, phrase) {
         if (phrase) text = text.replace(new RegExp('(' + phrase + ')', 'gi'),
