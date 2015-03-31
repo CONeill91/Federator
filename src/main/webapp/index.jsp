@@ -98,7 +98,8 @@
                     <tbody>
                    <tr data-ng-repeat="result in results | filter: filterResults | orderBy: ['source', 'title']" >
                       <td>
-                          <b><a ng-bind-html="result.title" | highlight:query
+                          <!--Dannys Function: upon link click the link and query are sent to function which sends to server -->
+                          <b><a ng-click=' storeLink(result.href, query); '
                                 href="{{result.href}}"
                                 class="result"
                                 title="{{result.title}}">{{result.title  | mailTrim : result.source}}</a><div class="box"><iframe src="{{result.href | trustUrl}}" scrolling ="no" width = "500" height = "300" seamless></iframe></div></b><br/>
@@ -125,6 +126,7 @@
         <a style="padding-left: 10px" href="https://our.guidewire.com/pages/intranet.aspx">Intranet</a>
         <a style="padding-left: 10px" href="http://wiki.guidewire.com">Wiki</a>
         <a style="padding-left: 10px" href="http://wd5.myworkday.com/guidewire/login.flex">Workday</a>
+        <a style="padding-left: 10px" href='#' ng-click='storeData("www.samplesite.com");'>mylink</a>
       </div>
       <img src="resources\images\rainbow-bar.png">
     </footer>

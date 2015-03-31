@@ -72,4 +72,16 @@ angular.module('FederatorApp.controllers', []).
                     $scope.summary = payload.data['content'];
                 });
         };
+
+        $scope.storeData = function(href){
+
+            SearchService.store(href);
+
+        };
+        //written by danny sends link & query to store service
+        $scope.storeLink = function(link,query) {
+            // Remember the link href
+            SearchService.store(link,query);
+
+        };
     });
