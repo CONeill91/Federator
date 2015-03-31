@@ -1,11 +1,14 @@
 angular.module('FederatorApp.filters', []).filter('mailTrim', function() {
+    //console.lg("In the mailtrim method");
     return function(input,source) {
+    //console.log(input);
         if(source === "Mail:PL" || source === "Mail:BC" || source === "Mail:CC" || source === "Mail:PC"){
             var index = input.lastIndexOf("]");
             if (index > 0) {
                 input = input.slice(index + 1, input.length);
             }
         }
+        console.log(input);
         return input;
     }
 })

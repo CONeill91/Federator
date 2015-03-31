@@ -10,6 +10,7 @@
 
     <link rel='stylesheet' href='webjars/bootstrap/3.1.0/css/bootstrap.min.css'>
     <link rel='stylesheet' href='resources/customcss/customcss.css'>
+
     <script src="webjars/angularjs/1.2.26/angular.min.js"></script>
     <script src="resources/js/app.js"></script>
     <script src="resources/js/services.js"></script>
@@ -30,9 +31,6 @@
           </a>
                   <h1>Federator</h1>
         </div>
-        <div class="container-fluid">
-
-            <br>
 
     <div class="container-fluid">
         <div class="row">
@@ -44,7 +42,7 @@
 
                     <input type="text" data-ng-model="query" placeholder="Search" data-auto-focus>
 
-                    <a style="padding-right: 75px"></a> <!-- empty element for space -->
+                    <a style="padding-right: 75px"></a>
 
                     <label ng-repeat="searchLocation in searchLocations">
                         <input type="checkbox" checklist-model="search.searchIn" checklist-value="searchLocation">
@@ -63,15 +61,13 @@
   </div>
 </nav>
 
-<!-- End Header -->
-
      <div class="tabs" ng-show="results.length != 0" style="clear:both;">
          <ul class ="nav nav-tabs">
             <li>
                 <a href ng-click="activateTab()">All</a>
             </li>
             <li ng-repeat="searchLocation in searchLocations">
-                <a href ng-click="activateTab(searchLocation)" ng-show="countResultsForSource(results, searchLocation) != 0">{{searchLocation}} ({{countResultsForSource(results, searchLocation)}})</a>
+                <a href ng-click="activateTab(searchLocation)">{{searchLocation}} ({{countResultsForSource(results, searchLocation)}})</a>
             </li>
          </ul>
      </div>
@@ -92,11 +88,11 @@
                     <tbody>
                    <tr data-ng-repeat="result in results | filter: filterResults | orderBy: ['source', 'title']" >
                       <td>
-                          <b><a ng-bind-html="result.title| highlight:query"
+                          <b><a ng-bind-html="result.title | highlight:query"
                                 href="{{result.href}}"
                                 rel = "nofollow"
                                 class="result"
-                                title="{{result.title}}">{{result.title  | mailTrim : result.source}}</a><div class="box"><iframe src="{{result.href | trustUrl}}" scrolling ="no" width = "500" height = "300" seamless></iframe></div></b><br/>
+                                title="{{result.title | mailTrim">{{result.title}}</a></b><br/>
                         <p ng-bind-html="result.content | highlight:query" >{{result.content }}</p>
                       </td>
                       <td>{{result.source}}</td>
