@@ -9,13 +9,24 @@ angular.module('FederatorApp.controllers', []).
         $scope.searchLocations = [
             'Confluence',
             'Jira',
-            'Mail:PL',//this is mail:pl
+            'Mail:PL',
             'Mail:BC',
             'Mail:CC',
-            'Mail:PC', // this is mail:pc
+            'Mail:PC',
             'Intranet',
-            'Wiki'
+            'Wiki',
+            'KB Articles'
         ];
+
+        $scope.countResultsForSource = function(results, source) {
+            var count = 0;
+            results.forEach(function(r) {
+                if(r.source === source) {
+                    count++;
+                }
+            });
+            return count;
+        }
 
         $scope.activateTab = function(activeTab) {
             $scope.activeTab = activeTab;
