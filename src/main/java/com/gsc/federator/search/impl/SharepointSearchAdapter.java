@@ -30,7 +30,7 @@ public class SharepointSearchAdapter implements SearchAdapter {
 
         final Document doc = Jsoup.connect(
                "https://sharepoint.guidewire.com/searchcenter/pages/Results.aspx?k=" + searchQuery.getQuery() + "&s=All%20Sites&start1=1").get();
-                logger.info("Conor");
+
 
 
 
@@ -61,8 +61,10 @@ public class SharepointSearchAdapter implements SearchAdapter {
 
     @Override
     public SummaryResult summarize(final SummaryRequest summaryRequest) throws IOException {
+        final SummaryResult summaryResult = new SummaryResult(summaryRequest);
 
-        return null;
+        summaryResult.setContent(Jsoup.connect(summaryRequest.getUrl()).get().outerHtml());
+        return summaryResult;
     }
 
 }

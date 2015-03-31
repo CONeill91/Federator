@@ -69,6 +69,9 @@ public class JiraSearchAdapter implements SearchAdapter {
 
     @Override
     public SummaryResult summarize(final SummaryRequest summaryRequest) throws IOException {
-        return null;
+        final SummaryResult summaryResult = new SummaryResult(summaryRequest);
+
+        summaryResult.setContent(Jsoup.connect(summaryRequest.getUrl()).get().outerHtml());
+        return summaryResult;
     }
 }

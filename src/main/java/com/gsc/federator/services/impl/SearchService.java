@@ -19,7 +19,7 @@ import java.util.Set;
 public class SearchService implements com.gsc.federator.services.SearchService {
     private static final Logger logger = LoggerFactory.getLogger(SearchService.class);
 
-    @Autowired
+    @Autowired//ctrl b to see interfacing classes
     private Set<SearchAdapter> searchAdapters;
 
 
@@ -36,6 +36,8 @@ public class SearchService implements com.gsc.federator.services.SearchService {
                     searchAdapter.peformSearch(searchQuery, searchResultContainer);
 
                     logger.info("Searched in [{}]", searchAdapter);
+
+
                 }
             } catch (IOException e) {
                 logger.error("Unable to search [{}]", searchAdapter, e);

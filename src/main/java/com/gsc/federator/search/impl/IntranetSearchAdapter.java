@@ -51,7 +51,7 @@ public class IntranetSearchAdapter implements SearchAdapter {
         final SummaryResult summaryResult = new SummaryResult(summaryRequest);
 
         summaryResult.setContent(
-                Jsoup.connect(summaryRequest.getUrl()).get().text());
+                Jsoup.connect(summaryRequest.getUrl()).get().outerHtml());
 
         return summaryResult;
     }
