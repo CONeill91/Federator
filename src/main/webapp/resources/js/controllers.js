@@ -13,7 +13,6 @@ angular.module('FederatorApp.controllers', []).
             'Mail:CC',
             'Mail:PC',
             'Intranet',
-            'KB Articles'
             'Wiki',
             'Sharepoint'
         ];

@@ -30,15 +30,10 @@
   <div class="container-fluid">
     <div class="navbar-header" style="text-align: center">
       <img src="resources/images/rainbow-bar.png">
-      <!--<a class="navbar-brand" href="index.jsp">
-        <!--<img src="resources/images/guidewire-logo.png"> -->
-      </a>
               <h1>Guidewire Federator</h1>
     </div>
 
     <div class="container-fluid">
-
-        <br>
 
         <div class="row">
             <div class="col-md-12">
@@ -48,7 +43,7 @@
                 <form data-ng-submit="doParallelSearch()">
 
                    <div id="searchbar">
-                       <input id="textbox" size="95" type="text" data-ng-model="query" placeholder="Search" data-auto-focus>
+                       <input id="textbox" size="110" type="text" data-ng-model="query" placeholder="Search" data-auto-focus style="padding-left: 10px">
                        <button id="searchbutton" type="submit" class="btn btn-primary" data-ng-disabled="!query || inflight || search.searchIn.length == 0"><span class="glyphicon glyphicon-search"></span> Search</button>
                    </div>
                     <br>
@@ -61,7 +56,8 @@
                     <input class="btn btn-xs custom80" type="button" ng-click="uncheckAll()" value="Clear All">
                     </div>
                 </form>
-
+                
+                <br>
                 <br>
             </div>
         </div>
@@ -69,7 +65,6 @@
 </nav>
 
 <!-- End Header -->
-
      <div class="tabs" ng-show="results.length != 0" style="clear:both;">
          <ul class ="nav nav-tabs">
             <li>
@@ -97,13 +92,13 @@
                     <tbody>
                    <tr data-ng-repeat="result in results | filter: filterResults | orderBy: ['source', 'title']" >
                       <td>
-                          <b><a ng-bind-html="result.title| highlight:query"
+                          <b><a ng-bind-html="result.title"| highlight:query"
                           <!--Dannys Function: upon link click the link and query are sent to function which sends to server -->
                           <b><a ng-click=' storeLink(result.href, query); '
                                 href="{{result.href}}"
                                 rel = "nofollow"
                                 class="result"
-                                title="{{result.title}}">{{result.title  | mailTrim : result.source}}</a><div class="box"><iframe src="{{result.href | trustUrl}}" scrolling ="no" width = "500" height = "300" seamless></iframe></div></b><br/>
+                                title="{{result.title}}">{{result.title  | mailTrim : result.source}}</a></b><br/>
                         <p ng-bind-html="result.content | highlight:query" >{{result.content }}</p>
                       </td>
                       <td>{{result.source}}</td>

@@ -31,21 +31,6 @@ input[type="checkbox"] {
   background: yellow;
 }
 
-.box {
-  display: none;
-  width: 100%;
-}
-
-a:hover + .box,.box:hover {
-  display: block;
-  position: relative;
-  z-index: 100;
-}
-
-a.result {
-  font-size: larger;
-}
-
 #textbox {
    height:35px;
 }
@@ -55,5 +40,13 @@ a.result {
 }
 
 #optionsbar {
- text-align: center;
+  text-align: center;
+}
+
+.dropdown {
+float: right;
+}
+
+p {
+font-weight: normal;
 }
