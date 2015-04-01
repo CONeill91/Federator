@@ -9,14 +9,17 @@
     <title>Federator</title>
 
     <link rel='stylesheet' href='webjars/bootstrap/3.1.0/css/bootstrap.min.css'>
-    <link rel='stylesheet' href='resources/customcss/customcss.css'>
+    <link rel='stylesheet' href='resources/customcss/customcss.css'>  <!-- Custom stylesheet override -->
+
     <script src="webjars/angularjs/1.2.26/angular.min.js"></script>
     <script src="resources/js/app.js"></script>
     <script src="resources/js/services.js"></script>
     <script src="resources/js/directives.js"></script>
     <script src="resources/js/controllers.js"></script>
     <script src="resources/js/filters.js"></script>
-    <link rel="shortcut icon" href="resources/images/favicon.ico" />
+
+     <link rel="shortcut icon" href="resources/images/favicon.ico" /> <!-- Favicon link to file -->
+
 </head>
 
 <body data-ng-controller="SearchController">
@@ -25,11 +28,12 @@
 
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <img src="resources\images\rainbow-bar.png">
-      <a class="navbar-brand" href="index.jsp">
-        <img src="resources\images\guidewire-logo.png">
+    <div class="navbar-header" style="text-align: center">
+      <img src="resources/images/rainbow-bar.png">
+      <!--<a class="navbar-brand" href="index.jsp">
+        <!--<img src="resources/images/guidewire-logo.png"> -->
       </a>
+              <h1>Guidewire Federator</h1>
     </div>
 
     <div class="container-fluid">
@@ -43,22 +47,19 @@
 
                 <form data-ng-submit="doParallelSearch()">
 
-                    <button id="searchbutton" type="submit" class="btn btn-primary" data-ng-disabled="!query || inflight || search.searchIn.length == 0"><span class="glyphicon glyphicon-search"></span> Search</button>
-
-                    <input type="text" data-ng-model="query" placeholder="Search" data-auto-focus>
-
-                    <a style="padding-right: 75px"></a> <!-- empty element for space -->
-
-                    <label ng-repeat="searchLocation in searchLocations">
+                   <div id="searchbar">
+                       <input id="textbox" size="95" type="text" data-ng-model="query" placeholder="Search" data-auto-focus>
+                       <button id="searchbutton" type="submit" class="btn btn-primary" data-ng-disabled="!query || inflight || search.searchIn.length == 0"><span class="glyphicon glyphicon-search"></span> Search</button>
+                   </div>
+                    <br>
+                    <div id="optionsbar">
+                       <label ng-repeat="searchLocation in searchLocations">
                         <input type="checkbox" checklist-model="search.searchIn" checklist-value="searchLocation">
                         {{searchLocation}}
-                    </label>
-                    <input class="btn btn-primary custom80" type="button" ng-click="checkAll()" value="All">
-                    <input class="btn btn-primary custom80" type="button" ng-click="uncheckAll()" value="None">
-
-                      <a href="https://guidewire.my.salesforce.com">
-                         <img class="chatter" src="resources\images\chatter-logo.png">
-                      </a>
+                       </label>
+                    <input class="btn btn-xs custom80" type="button" ng-click="checkAll()" value="Select All">
+                    <input class="btn btn-xs custom80" type="button" ng-click="uncheckAll()" value="Clear All">
+                    </div>
                 </form>
 
                 <br>
@@ -126,8 +127,9 @@
         <a style="padding-left: 10px" href="https://our.guidewire.com/pages/intranet.aspx">Intranet</a>
         <a style="padding-left: 10px" href="http://wiki.guidewire.com">Wiki</a>
         <a style="padding-left: 10px" href="http://wd5.myworkday.com/guidewire/login.flex">Workday</a>
+        <a style="padding-left: 10px" href="mailto:msaccotelli@guidewire.com?Subject=Federator:%20Support%20Issue" target="_top"><span class="glyphicons glyphicons-circle-question-mark"></span>Support</a> <!-- Support Mail Link -->
       </div>
-      <img src="resources\images\rainbow-bar.png">
+      <img src="resources/images/rainbow-bar.png">
     </footer>
 </body>
 </html>
