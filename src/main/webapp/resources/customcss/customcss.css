@@ -31,22 +31,29 @@ input[type="checkbox"] {
   background: yellow;
 }
 
-#textbox {
-   height:35px;
-}
-
-#searchbar {
- text-align: center;
-}
-
-#optionsbar {
+.box {
+   display: none;
+   width: 100%;
+ }
+ 
+ a:hover + .box,.box:hover {
+   display: block;
+   position: relative;
+   z-index: 100;
+ }
+ 
+ a.result {
+   font-size: larger;
+ }
+ 
+ #textbox {
+    height:35px;
+ }
+ 
+ #searchbar {
   text-align: center;
-}
-
-.dropdown {
-float: right;
-}
-
-p {
-font-weight: normal;
-}
+ }
+ 
+ #optionsbar {
+  text-align: center;
+ }
