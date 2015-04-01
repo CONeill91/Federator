@@ -43,6 +43,7 @@
         <div class="row">
             <div class="col-md-12">
 
+
                 <br>
 
                 <form data-ng-submit="doParallelSearch()">
@@ -62,22 +63,28 @@
                     </div>
                 </form>
 
+
+
                 <br>
             </div>
         </div>
   </div>
 </nav>
-
      <div class="tabs" ng-show="results.length != 0" style="clear:both;">
-         <ul class ="nav nav-tabs">
+
+        <ul class ="nav nav-tabs">
             <li>
-                <a href ng-click="activateTab()">All</a>
+                <a href ng-click="activateTab()">All ({{results.length}})</a>
             </li>
             <li ng-repeat="searchLocation in searchLocations">
-                <a href ng-click="activateTab(searchLocation)" ng-show="countResultsForSource(results, searchLocation) != 0">{{searchLocation}} ({{countResultsForSource(results, searchLocation)}})</a>
+                <a href ng-click="activateTab(searchLocation)" ng-show="countResultsForSource(results, searchLocation) != 0"> {{searchLocation}} ({{countResultsForSource(results, searchLocation)}})</a>
             </li>
+
          </ul>
      </div>
+
+
+
 
     <div class="row">
         <div class="col-md-12">
@@ -88,15 +95,15 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Result ({{results.length}}) {{inflight ? 'In progress..' : ''}}</th>
-                        <th>Source</th>
+                        <th >Result  {{inflight ? 'In progress..' : ''}}</th>
+
+                        <th ng-show="activeTab !== 'Wiki' && activeTab !== 'Confluence' && activeTab !== 'Jira' && activeTab !== 'Mail:PL' && activeTab !== 'Mail:BC' && activeTab !== 'Mail:CC' && activeTab !== 'Mail:PC' && activeTab !== 'Intranet' && activeTab !== 'Sharepoint'">{{result.source}}</th>
                     </tr>
                     </thead>
                     <tbody>
                    <tr data-ng-repeat="result in results | filter: filterResults | orderBy: ['source', 'title']" >
                       <td>
-                          <b><a ng-bind-html="result.title| highlight:query"
-                          <!--Dannys Function: upon link click the link and query are sent to function which sends to server -->
+                          <b><a ng-bind-html="result.title | highlight:query"
                           <b><a ng-click=' storeLink(result.href, query); '
                                 href="{{result.href}}"
                                 rel = "nofollow"
@@ -104,7 +111,7 @@
                                 title="{{result.title | mailTrim">{{result.title}}</a></b><br/>
                         <p ng-bind-html="result.content | highlight:query" >{{result.content }}</p>
                       </td>
-                      <td>{{result.source}}</td>
+                      <td ng-show="activeTab !== 'Wiki' && activeTab !== 'Confluence' && activeTab !== 'Jira' && activeTab !== 'Mail:PL' && activeTab !== 'Mail:BC' && activeTab !== 'Mail:CC' && activeTab !== 'Mail:PC' && activeTab !== 'Intranet' && activeTab !== 'Sharepoint'">{{result.source}}</td>
                     </tbody>
                 </table>
                 <br>
