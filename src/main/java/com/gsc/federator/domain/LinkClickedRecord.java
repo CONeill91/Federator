@@ -43,6 +43,7 @@ public class LinkClickedRecord implements DomainObject {
     public void setQuery_id(final String id){
         this.query_id = id;
     }
+
     public void setLink(final String link) { this.link = link; }
 
     public String getLink(){ return link; }

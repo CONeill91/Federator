@@ -28,6 +28,7 @@ public class Application {
         for (final String beanName : beanNames) {
             logger.info("bean [{}]", beanName);
         }
+
     }
 
 }

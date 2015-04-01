@@ -54,6 +54,7 @@ public class FederatorController {
 
         //todo just for demo purpose prints out all values from the db
         for (final SearchQueryRecord sq : queryRepository.findAll()) {
+
             logger.info("From db {}", sq);
         }
 
@@ -71,7 +72,7 @@ public class FederatorController {
     }
     @RequestMapping("/store")
     public void store(@RequestBody String[] queryData) {
-        logger.info("The link that was entered is: "+queryData[0] +" The query that was enetered is: "+queryData[1]);
+        logger.info("The link that was entered is: "+ queryData[0] + " The query that was enetered is: " + queryData[1]);
 
         // record in the database
         final LinkClickedRecord linkClickedRecord = new LinkClickedRecord();

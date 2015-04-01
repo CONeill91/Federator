@@ -95,15 +95,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                   <tr data-ng-repeat="result in results | filter: filterResults | orderBy: ['source', 'title']" >
+                   <tr data-ng-repeat="result in results | filter: trimMail  | filter: filterResults | orderBy: ['source', 'title']">
                       <td>
-                          <b><a ng-bind-html="result.title| highlight:query"
+
+
                           <!--Dannys Function: upon link click the link and query are sent to function which sends to server -->
-                          <b><a ng-click=' storeLink(result.href, query); '
+                          <b><a ng-click=' storeLink(result.href, query);' ng-bind-html = "result.title | highlight:query"
                                 href="{{result.href}}"
-                                rel = "nofollow"
+                                rel="nofollow"
                                 class="result"
-                                title="{{result.title}}">{{result.title  | mailTrim : result.source}}</a><div class="box"><iframe src="{{result.href | trustUrl}}" scrolling ="no" width = "500" height = "300" seamless></iframe></div></b><br/>
+                                title="{{result.title}}">{{result.title}}</a></b><br/>
                         <p ng-bind-html="result.content | highlight:query" >{{result.content }}</p>
                       </td>
                       <td>{{result.source}}</td>

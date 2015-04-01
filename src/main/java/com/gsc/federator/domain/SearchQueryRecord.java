@@ -38,4 +38,6 @@ public class SearchQueryRecord implements DomainObject {
                 ", query='" + query + '\'' +
                 '}';
     }
+
+
 }
