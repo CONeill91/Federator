@@ -28,35 +28,38 @@
 
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <div class="navbar-header">
+    <div class="navbar-header" style="text-align: center">
       <img src="resources/images/rainbow-bar.png">
-      <a class="navbar-brand" href="index.jsp">
-        <img src="resources/images/guidewire-logo.png">
+      <!--<a class="navbar-brand" href="index.jsp">
+        <!--<img src="resources/images/guidewire-logo.png"> -->
       </a>
-              <h1>Federator</h1>
+              <h1>Guidewire Federator</h1>
     </div>
 
     <div class="container-fluid">
+
+        <br>
+
         <div class="row">
             <div class="col-md-12">
 
+                <br>
+
                 <form data-ng-submit="doParallelSearch()">
 
-                    <button id="searchbutton" type="submit" class="btn btn-primary" data-ng-disabled="!query || inflight || search.searchIn.length == 0"><span class="glyphicon glyphicon-search"></span> Search</button>
-
-                    <input type="text" data-ng-model="query" placeholder="Search" data-auto-focus>
-
-                    <a style="padding-right: 75px"></a> <!-- empty element for space -->
-
-                    <label ng-repeat="searchLocation in searchLocations">
+                   <div id="searchbar">
+                       <input id="textbox" size="95" type="text" data-ng-model="query" placeholder="Search" data-auto-focus>
+                       <button id="searchbutton" type="submit" class="btn btn-primary" data-ng-disabled="!query || inflight || search.searchIn.length == 0"><span class="glyphicon glyphicon-search"></span> Search</button>
+                   </div>
+                    <br>
+                    <div id="optionsbar">
+                       <label ng-repeat="searchLocation in searchLocations">
                         <input type="checkbox" checklist-model="search.searchIn" checklist-value="searchLocation">
                         {{searchLocation}}
-                    </label>
-                    <input class="btn btn-primary custom80" type="button" ng-click="checkAll()" value="Select All">
-                    <input class="btn btn-primary custom80" type="button" ng-click="uncheckAll()" value="Clear All">
-
-                    <a id="support"  href="mailto:msaccotelli@guidewire.com?Subject=Federator:%20Support%20Issue" target="_top"><span class="glyphicons glyphicons-circle-question-mark"></span>Support</a> <!-- Support Mail Link -->
-
+                       </label>
+                    <input class="btn btn-xs custom80" type="button" ng-click="checkAll()" value="Select All">
+                    <input class="btn btn-xs custom80" type="button" ng-click="uncheckAll()" value="Clear All">
+                    </div>
                 </form>
 
                 <br>
@@ -67,17 +70,16 @@
 
 <!-- End Header -->
 
-    <!-- Gareths tabs -->
-         <div class="tabs" ng-show="results.length != 0" style="clear:both;"> <!-- tabs will only display if there are results -->
-             <ul class ="nav nav-tabs">
-                <li>
-                    <a href ng-click="activateTab()">All</a>
-                </li>
-                <li ng-repeat="searchLocation in searchLocations">
-                    <a href ng-click="activateTab(searchLocation)">{{searchLocation}} ({{countResultsForSource(results, searchLocation)}})</a>
-                </li>
-             </ul>
-         </div>
+     <div class="tabs" ng-show="results.length != 0" style="clear:both;">
+         <ul class ="nav nav-tabs">
+            <li>
+                <a href ng-click="activateTab()">All</a>
+            </li>
+            <li ng-repeat="searchLocation in searchLocations">
+                <a href ng-click="activateTab(searchLocation)" ng-show="countResultsForSource(results, searchLocation) != 0">{{searchLocation}} ({{countResultsForSource(results, searchLocation)}})</a>
+            </li>
+         </ul>
+     </div>
 
     <div class="row">
         <div class="col-md-12">
@@ -96,10 +98,12 @@
                    <tr data-ng-repeat="result in results | filter: filterResults | orderBy: ['source', 'title']" >
                       <td>
                           <b><a ng-bind-html="result.title| highlight:query"
+                          <!--Dannys Function: upon link click the link and query are sent to function which sends to server -->
+                          <b><a ng-click=' storeLink(result.href, query); '
                                 href="{{result.href}}"
                                 rel = "nofollow"
                                 class="result"
-                                title="{{result.title}}">{{result.title  | mailTrim : result.source}}</a></b><br/>
+                                title="{{result.title}}">{{result.title  | mailTrim : result.source}}</a><div class="box"><iframe src="{{result.href | trustUrl}}" scrolling ="no" width = "500" height = "300" seamless></iframe></div></b><br/>
                         <p ng-bind-html="result.content | highlight:query" >{{result.content }}</p>
                       </td>
                       <td>{{result.source}}</td>
@@ -123,6 +127,7 @@
         <a style="padding-left: 10px" href="https://our.guidewire.com/pages/intranet.aspx">Intranet</a>
         <a style="padding-left: 10px" href="http://wiki.guidewire.com">Wiki</a>
         <a style="padding-left: 10px" href="http://wd5.myworkday.com/guidewire/login.flex">Workday</a>
+        <a style="padding-left: 10px" href="mailto:msaccotelli@guidewire.com?Subject=Federator:%20Support%20Issue" target="_top"><span class="glyphicons glyphicons-circle-question-mark"></span>Support</a> <!-- Support Mail Link -->
       </div>
       <img src="resources/images/rainbow-bar.png">
     </footer>

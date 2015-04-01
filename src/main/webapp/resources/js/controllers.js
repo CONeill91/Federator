@@ -13,6 +13,7 @@ angular.module('FederatorApp.controllers', []).
             'Mail:CC',
             'Mail:PC',
             'Intranet',
+            'KB Articles'
             'Wiki',
             'Sharepoint'
         ];
@@ -28,7 +29,6 @@ angular.module('FederatorApp.controllers', []).
         }
 
         $scope.activateTab = function(activeTab) {
-            console.log(activeTab)
             $scope.activeTab = activeTab;
         }
 
@@ -60,9 +60,6 @@ angular.module('FederatorApp.controllers', []).
             $scope.search.searchIn = [];
         };
 
-
-
-
         $scope.doParallelSearch = function () {
             $scope.inflight = 0;
             $scope.results = [];
@@ -81,24 +78,32 @@ angular.module('FederatorApp.controllers', []).
                         $scope.results = $scope.results.concat(payload.data['searchResults']);
                         $scope.inflight--;
                         $scope.searched = true;
-
                     }, function () {
                         // decrease even in case of error
                         $scope.inflight--;
                     });
-
             });
         };
 
-
-
         $scope.doSummary = function (result) {
             var summaryPromise = SearchService.summarize(result.source, result.href);
-            console.log(summaryPromise);
+
             summaryPromise.then(
                 function (payload) {
                     //console.log(payload);
                     $scope.summary = payload.data['content'];
                 });
+        };
+
+        $scope.storeData = function(href){
+
+            SearchService.store(href);
+
+        };
+        //written by danny sends link & query to store service
+        $scope.storeLink = function(link,query) {
+            // Remember the link href
+            SearchService.store(link,query);
+
         };
     });
