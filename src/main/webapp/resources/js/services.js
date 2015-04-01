@@ -11,6 +11,12 @@ angular.module('FederatorApp.services', []).
             },
             summarize: function (source, url) {
                 return $http.get('summarize?s=' + encodeURIComponent(source) + '&u=' + encodeURIComponent(url));
+            },
+            //Written by Danny - store function will send the clicked link and the searched term to the store function in the federator controller
+            store: function (link, query) {
+                param = [link,query];
+                return $http.post('store',param);
+
             }
         };
     });
