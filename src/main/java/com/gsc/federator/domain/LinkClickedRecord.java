@@ -1,5 +1,4 @@
 package com.gsc.federator.domain;
-
 import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Date;

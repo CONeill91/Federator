@@ -16,7 +16,6 @@ angular.module('FederatorApp.services', []).
             store: function (link, query) {
                 param = [link,query];
                 return $http.post('store',param);
-
             }
         };
     });

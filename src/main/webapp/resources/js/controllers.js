@@ -5,6 +5,7 @@
 angular.module('FederatorApp.controllers', []).
     controller('SearchController', function ($scope, SearchService) {
         $scope.results = [];
+        $scope.currentActivetab;
         $scope.searchLocations = [
             'Confluence',
             'Jira',
@@ -27,8 +28,10 @@ angular.module('FederatorApp.controllers', []).
             return count;
         }
 
-        $scope.activateTab = function(activeTab) {
-            $scope.activeTab = activeTab;
+        $scope.activateTab = function(currentActivetab) {
+            $scope.activeTab = currentActivetab;
+            console.log(currentActivetab);
+            return currentActivetab;
         }
 
         $scope.filterResults = function(result){

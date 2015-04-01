@@ -48,7 +48,7 @@
                 <form data-ng-submit="doParallelSearch()">
 
                    <div id="searchbar">
-                       <input id="textbox" size="95" type="text" data-ng-model="query" placeholder="Search" data-auto-focus>
+                       <input id="textbox" size="110" type="text" data-ng-model="query" placeholder="Search" data-auto-focus style="padding-left: 10px">
                        <button id="searchbutton" type="submit" class="btn btn-primary" data-ng-disabled="!query || inflight || search.searchIn.length == 0"><span class="glyphicon glyphicon-search"></span> Search</button>
                    </div>
                     <br>
@@ -63,6 +63,7 @@
                 </form>
 
                 <br>
+                <br>
             </div>
         </div>
   </div>
@@ -73,41 +74,42 @@
      <div class="tabs" ng-show="results.length != 0" style="clear:both;">
          <ul class ="nav nav-tabs">
             <li>
-                <a href ng-click="activateTab()">All</a>
+                <a href ng-click="activateTab()">All ({{results.length}})</a>
             </li>
             <li ng-repeat="searchLocation in searchLocations">
-                <a href ng-click="activateTab(searchLocation)" ng-show="countResultsForSource(results, searchLocation) != 0">{{searchLocation}} ({{countResultsForSource(results, searchLocation)}})</a>
+                <a href ng-click="activateTab(searchLocation)" ng-show="countResultsForSource(results, searchLocation) != 0"> {{searchLocation}} ({{countResultsForSource(results, searchLocation)}})</a>
             </li>
          </ul>
      </div>
 
     <div class="row">
         <div class="col-md-12">
-            <span data-ng-show="!inflight && searched && results.length == 0">No results</span>  <!-- possibly call a function here? -->
+            <span data-ng-show="!inflight && searched && results.length == 0">No results</span>
             <i data-ng-show="inflight && results.length == 0">Please wait...</i>
 
             <div id="results" data-ng-show="results.length > 0">
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Result ({{results.length}}) {{inflight ? 'In progress..' : ''}}</th>
-                        <th>Source</th>
+                        <th >Result  {{inflight ? 'In progress..' : ''}}</th>
+
+                        <th ng-show="activeTab !== 'Wiki' && activeTab !== 'Confluence' && activeTab !== 'Jira' && activeTab !== 'Mail:PL' && activeTab !== 'Mail:BC' && activeTab !== 'Mail:CC' && activeTab !== 'Mail:PC' && activeTab !== 'Intranet' && activeTab !== 'Sharepoint'">Source</th>
                     </tr>
                     </thead>
                     <tbody>
-                   <tr data-ng-repeat="result in results | filter: trimMail  | filter: filterResults | orderBy: ['source', 'title']">
+                   <tr data-ng-repeat="result in results | filter: trimMail | filter: filterResults | orderBy: ['source', 'title']" >
                       <td>
 
 
                           <!--Dannys Function: upon link click the link and query are sent to function which sends to server -->
                           <b><a ng-click=' storeLink(result.href, query);' ng-bind-html = "result.title | highlight:query"
                                 href="{{result.href}}"
-                                rel="nofollow"
+                                rel = "nofollow"
                                 class="result"
-                                title="{{result.title}}">{{result.title}}</a></b><br/>
+                                title=>{{result.title}}</a></b><br/>
                         <p ng-bind-html="result.content | highlight:query" >{{result.content }}</p>
                       </td>
-                      <td>{{result.source}}</td>
+                      <td ng-show="activeTab !== 'Wiki' && activeTab !== 'Confluence' && activeTab !== 'Jira' && activeTab !== 'Mail:PL' && activeTab !== 'Mail:BC' && activeTab !== 'Mail:CC' && activeTab !== 'Mail:PC' && activeTab !== 'Intranet' && activeTab !== 'Sharepoint'">{{result.source}}</td>
                     </tbody>
                 </table>
                 <br>

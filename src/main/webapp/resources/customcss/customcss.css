@@ -32,28 +32,28 @@ input[type="checkbox"] {
 }
 
 .box {
-  display: none;
-  width: 100%;
-}
-
-a:hover + .box,.box:hover {
-  display: block;
-  position: relative;
-  z-index: 100;
-}
-
-a.result {
-  font-size: larger;
-}
-
-#textbox {
-   height:35px;
-}
-
-#searchbar {
- text-align: center;
-}
-
-#optionsbar {
- text-align: center;
-}
+   display: none;
+   width: 100%;
+ }
+ 
+ a:hover + .box,.box:hover {
+   display: block;
+   position: relative;
+   z-index: 100;
+ }
+ 
+ a.result {
+   font-size: larger;
+ }
+ 
+ #textbox {
+    height:35px;
+ }
+ 
+ #searchbar {
+  text-align: center;
+ }
+ 
+ #optionsbar {
+  text-align: center;
+ }

@@ -47,7 +47,6 @@ public class ConfluenceSearchAdapter implements SearchAdapter {
                 logger.error("Error selecting element {}", result.outerHtml(), ex);
             }
         }
-
     }
 
     @Override
