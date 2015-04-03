@@ -38,15 +38,14 @@ angular.module('FederatorApp.controllers', []).
             return !$scope.activeTab || result.source === $scope.activeTab;
         }
 
+        // If source of result is a mail list, remove list tags.
         $scope.trimMail = function(result){
              if(result.source === "Mail:PL" || result.source === "Mail:BC" || result.source === "Mail:CC" || result.source === "Mail:PC"){
                 var index = result.title.lastIndexOf("]");
                 if (index > 0) {
                     result.title = result.title.slice(index + 1, result.title.length);
-
                 }
              }
-
              return result.title;
         }
 

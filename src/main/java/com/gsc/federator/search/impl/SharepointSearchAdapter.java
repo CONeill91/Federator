@@ -27,13 +27,13 @@ public class SharepointSearchAdapter implements SearchAdapter {
 
     @Override
     public void peformSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException {
-
+        // Connect to  page
         final Document doc = Jsoup.connect(
                "https://sharepoint.guidewire.com/searchcenter/pages/Results.aspx?k=" + searchQuery.getQuery() + "&s=All%20Sites&start1=1").get();
 
 
 
-
+        // Populate Elements list w/ desired content.
         final Elements results = doc.getElementsByClass("srch-Title3");
         // Content is not contained in the same tags as Title & Link
         final Elements content = doc.getElementsByClass("srch-Description2");
@@ -45,7 +45,7 @@ public class SharepointSearchAdapter implements SearchAdapter {
                 continue;
             }
 
-            try {
+            try { // Create searchResult object, add info to it & add to the SearchContainer.
                 final SearchResult searchResult = new SearchResult();
                 searchResult.setSource(this.getName());
                 searchResult.setHref(result.select("a").first().attr("href"));

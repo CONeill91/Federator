@@ -28,13 +28,14 @@ public class ConfluenceSearchAdapter implements SearchAdapter {
 
     @Override
     public void peformSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException {
-
+        // Connect to URL
         final Document doc = Jsoup.connect(
                 "https://confluence.guidewire.com/dosearchsite.action?queryString=" + searchQuery.getQuery()).get();
-
+        // Populate Elements link with desired content.
         final Elements results = doc.select("ol.search-results li");
         logger.info(results.size() + "");
 
+        // Create SearchResult object, set it's data & add it to the SearchContainer.
         for (final Element result : results) {
             try {
                 final SearchResult searchResult = new SearchResult();

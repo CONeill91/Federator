@@ -10,6 +10,7 @@
 
     <link rel='stylesheet' href='webjars/bootstrap/3.1.0/css/bootstrap.min.css'>
     <link rel='stylesheet' href='resources/customcss/customcss.css'>  <!-- Custom stylesheet override -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
     <script src="webjars/angularjs/1.2.26/angular.min.js"></script>
     <script src="resources/js/app.js"></script>
@@ -17,6 +18,16 @@
     <script src="resources/js/directives.js"></script>
     <script src="resources/js/controllers.js"></script>
     <script src="resources/js/filters.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+     <script>
+          $(function() {
+            $( document ).tooltip();
+          });
+     </script>
+
+
 
      <link rel="shortcut icon" href="resources/images/favicon.ico" /> <!-- Favicon link to file -->
 
@@ -106,7 +117,7 @@
                                 href="{{result.href}}"
                                 rel = "nofollow"
                                 class="result"
-                                title=>{{result.title}}</a></b><br/>
+                                title="{{result.title}} - {{result.content}}">{{result.title}}</a></b><br/>
                         <p ng-bind-html="result.content | highlight:query" >{{result.content }}</p>
                       </td>
                       <td ng-show="activeTab !== 'Wiki' && activeTab !== 'Confluence' && activeTab !== 'Jira' && activeTab !== 'Mail:PL' && activeTab !== 'Mail:BC' && activeTab !== 'Mail:CC' && activeTab !== 'Mail:PC' && activeTab !== 'Intranet' && activeTab !== 'Sharepoint'">{{result.source}}</td>
