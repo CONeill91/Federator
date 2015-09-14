@@ -19,16 +19,17 @@ public class IndexApp {
         //final String fName = args[0];
         //final String fName = "C:\\Users\\msaccotelli\\Downloads\\isl99201.pdf";
 
-        final String fDir = "c:\\Users\\msaccotelli\\Documents\\projects\\Functional-Certification\\";
+        final String fDir = "c:\\Users\\coneill\\Documents";
 
         for (final File f : FileUtils.listFiles(new File(fDir),
-                new String[]{"doc", "docx", "pdf", "ppt", "pptx", "xls", "xlsx"}, true)) {
+                new String[]{"doc", "docx", "pdf", "ppt", "pptx", "xls", "xlsx","txt"}, true)) {
             try {
                 String postData = "{ \"file\": \"" +
                         Base64.encodeBase64String(FileUtils.readFileToByteArray(f)) + "\" }";
 
                 final PostCommand postCommand = new PostCommand();
                 final PostCommandContainer postCommandContainer = new PostCommandContainer();
+
 
                 postCommandContainer.setUrl("http://localhost:9200/test/attachment/");
                 postCommandContainer.setData(postData);

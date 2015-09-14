@@ -104,7 +104,7 @@
                     <tr>
                         <th >Result  {{inflight ? 'In progress..' : ''}}</th>
 
-                        <th ng-show="activeTab !== 'Wiki' && activeTab !== 'Confluence' && activeTab !== 'Jira' && activeTab !== 'Mail:PL' && activeTab !== 'Mail:BC' && activeTab !== 'Mail:CC' && activeTab !== 'Mail:PC' && activeTab !== 'Intranet' && activeTab !== 'Sharepoint'">Source</th>
+                        <th ng-show="activeTab !== 'Wiki' && activeTab !== 'Confluence' && activeTab !== 'Jira' && activeTab !== 'Mail:PL' && activeTab !== 'Mail:BC' && activeTab !== 'Mail:CC' && activeTab !== 'Mail:PC' && activeTab !== 'Intranet' && activeTab !== 'Sharepoint'&& activeTab !== 'Elastic Search'">Source</th>
                     </tr>
                     </thead>
                     <tbody>

@@ -27,7 +27,7 @@ public class MailingListsSearchAdapter implements SearchAdapter {
     }
 
     @Override
-    public void peformSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException {
+    public void performSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException {
         final String[] mailingLists = new String[]{
 //                "claimcenterdevmm",
 //                "billingcenterdevmm",

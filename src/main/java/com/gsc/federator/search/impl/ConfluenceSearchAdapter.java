@@ -27,7 +27,7 @@ public class ConfluenceSearchAdapter implements SearchAdapter {
     }
 
     @Override
-    public void peformSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException {
+    public void performSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException {
         // Connect to URL
         final Document doc = Jsoup.connect(
                 "https://confluence.guidewire.com/dosearchsite.action?queryString=" + searchQuery.getQuery()).get();

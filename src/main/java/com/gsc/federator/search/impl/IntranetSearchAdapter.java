@@ -27,7 +27,7 @@ public class IntranetSearchAdapter implements SearchAdapter {
     }
 
     @Override
-    public void peformSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException {
+    public void performSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException {
         final Document doc = Jsoup.connect("http://search:8080/search/?query=" + searchQuery.getQuery() + "&go=Go").get();
         final Elements results = doc.select("div#yschweb ol li");
 

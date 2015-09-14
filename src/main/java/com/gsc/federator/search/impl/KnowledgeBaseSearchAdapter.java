@@ -27,7 +27,7 @@ public class KnowledgeBaseSearchAdapter implements SearchAdapter {
     }
 
     @Override
-    public void peformSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException {
+    public void performSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException {
 
         final Document doc = Jsoup.connect("https://guidewire.custhelp.com/app/answers/list/kw/" + searchQuery.getQuery() + "/search/1").
                 cookie("cp_session", "bU8CFmiMGMoeoDT0VUHUSXXMzoMmlvG9GDStnmoWwTr7A%7EFZl1s0xIs9aIUxVeOXeu092gwX9%7EmvYvZBKMVDN59zyQwdVMtFW8wEod7u6SHlE6cv0YxmQ2%7EjlZLx0hcBb87psQ1XU_SdxtcIj5xVCzRO%7ESuaQYLzDMc8vF3VQWgzX1SyVw3vp6_ltAtnXtJB4K1YJMBajdl5AqqEalKIyrpXL7Jhu5VmPBbifegM7WB9Yy8bob0Cqx3bEH9DcUA8MFatePgbMeu8ZtonCbMmPgJ4Mfh8FyDN1j6kxLzbul5454pNEkHp733qQxZuW%7EO6nvjFmWhdUAtsw%21").

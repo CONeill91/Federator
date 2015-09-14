@@ -27,7 +27,7 @@ public class WikiSearchAdapter implements SearchAdapter {
     }
 
     @Override
-    public void peformSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException {
+    public void performSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException {
         final Document doc = Jsoup.connect("http://wiki/index.php?title=Special%3ASearch&search=" + searchQuery.getQuery() + "&fulltext=Search").get();
         final Elements results = doc.select("ul.mw-search-results li");
 

@@ -15,7 +15,8 @@ angular.module('FederatorApp.controllers', []).
             'Mail:PC',
             'Intranet',
             'Wiki',
-            'Sharepoint'
+            'Sharepoint',
+            'ElasticSearch'
         ];
 
         $scope.countResultsForSource = function(results, source) {

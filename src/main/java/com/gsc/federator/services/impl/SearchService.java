@@ -33,7 +33,7 @@ public class SearchService implements com.gsc.federator.services.SearchService {
 
                     logger.debug("Searching in [{}]", searchAdapter);
 
-                    searchAdapter.peformSearch(searchQuery, searchResultContainer);
+                    searchAdapter.performSearch(searchQuery, searchResultContainer);
 
                     logger.info("Searched in [{}]", searchAdapter);
 

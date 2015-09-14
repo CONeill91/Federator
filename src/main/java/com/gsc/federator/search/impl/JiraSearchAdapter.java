@@ -35,7 +35,7 @@ public class JiraSearchAdapter implements SearchAdapter {
     }
 
     @Override
-    public void peformSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException {
+    public void performSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException {
 
         // https://jira.guidewire.com/issues/?jql=text%20~%20%22ISO8601DateFormat%22
 

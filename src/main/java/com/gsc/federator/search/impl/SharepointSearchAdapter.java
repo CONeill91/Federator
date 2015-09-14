@@ -26,7 +26,7 @@ public class SharepointSearchAdapter implements SearchAdapter {
     }
 
     @Override
-    public void peformSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException {
+    public void performSearch(final SearchQuery searchQuery, final SearchResultContainer searchResultContainer) throws IOException {
         // Connect to  page
         final Document doc = Jsoup.connect(
                "https://sharepoint.guidewire.com/searchcenter/pages/Results.aspx?k=" + searchQuery.getQuery() + "&s=All%20Sites&start1=1").get();

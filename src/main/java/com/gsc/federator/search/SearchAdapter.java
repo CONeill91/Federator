@@ -26,7 +26,7 @@ public interface SearchAdapter {
      * @param searchResultContainer
      * @throws IOException
      */
-    void peformSearch(SearchQuery searchQuery, SearchResultContainer searchResultContainer) throws IOException;
+    void performSearch(SearchQuery searchQuery, SearchResultContainer searchResultContainer) throws IOException;
 
 
     /**
