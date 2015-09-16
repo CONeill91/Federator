@@ -59,8 +59,9 @@
                 <form data-ng-submit="doParallelSearch()">
 
                    <div id="searchbar">
-                       <input id="textbox" size="110" type="text" data-ng-model="query" placeholder="Search" data-auto-focus style="padding-left: 10px">
-                       <button id="searchbutton" type="submit" class="btn btn-primary" data-ng-disabled="!query || inflight || search.searchIn.length == 0"><span class="glyphicon glyphicon-search"></span> Search</button>
+                       <input id="textbox" size="110" type="text" data-ng-model="query" placeholder="Search.." data-auto-focus style="padding-left: 10px">
+                       <button id="searchbutton" type="submit" class="btn btn-primary" data-ng-disabled="!query || inflight || search.searchIn.length == 0"><span class="glyphicon glyphicon-search"></span>Search</button>
+                       <button id="addcontent" type="submit" class="btn btn-primary">Add Content</button>
                    </div>
                     <br>
                     <div id="optionsbar">

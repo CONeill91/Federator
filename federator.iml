@@ -93,5 +93,7 @@
     <orderEntry type="library" name="Maven: org.webjars:jquery:1.9.0" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:angularjs:1.2.26" level="project" />
     <orderEntry type="library" name="commons-codec-1.9" level="project" />
+    <orderEntry type="library" name="gson-2.2.4" level="project" />
+    <orderEntry type="library" name="json-simple-1.1.1" level="project" />
   </component>
 </module>
