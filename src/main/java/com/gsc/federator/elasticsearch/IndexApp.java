@@ -19,7 +19,7 @@ public class IndexApp {
         //final String fName = args[0];
         //final String fName = "C:\\Users\\msaccotelli\\Downloads\\isl99201.pdf";
 
-        final String fDir = "c:\\Users\\coneill\\Documents";
+        final String fDir = "c:\\Users\\coneill\\Documents\\Haskell";
 
         for (final File f : FileUtils.listFiles(new File(fDir),
                 new String[]{"doc", "docx", "pdf", "ppt", "pptx", "xls", "xlsx","txt"}, true)) {
